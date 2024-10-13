@@ -9,22 +9,22 @@ public class ButtonLister extends MouseAndKeyLister {
     //此Lister是专门监听按钮的，鼠标进入会变色，按下会变小
     Model model;
     //正常时候的位置宽高
-    int x, y, w, h;
+    double x, y, w, h;
 
     public ButtonLister(Model model) {
         this.model = model;
-        this.x = model.getX();
-        this.y = model.getY();
-        this.w = model.getW();
-        this.h = model.getH();
+        this.x = model.getXDouble();
+        this.y = model.getYDouble();
+        this.w = model.getWDouble();
+        this.h = model.getHDouble();
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        model.setX((int) (0.025 * w + x));
-        model.setY((int) (0.025 * h + y));
-        model.setW((int) (0.95 * w));
-        model.setH((int) (0.95 * h));
+        model.setX(0.025 * w + x);
+        model.setY(0.025 * h + y);
+        model.setW(0.95 * w);
+        model.setH(0.95 * h);
     }
 
     @Override

@@ -13,19 +13,23 @@ public class PaintService {
     private static final TreeSet<Model> addPaintSet = new TreeSet<>();
     //待移除集合
     private static final TreeSet<Model> removePaintSet = new TreeSet<>();
+    //添加锁
+    private static final Object addLock = new Object();
+    //移除锁
+    private static final Object removeLock = new Object();
     //渲染图片长宽和整个屏幕的比值
     public static Integer index;
 
     //添加model
     public static void PaintSetAdd(Model model) {
-        synchronized (PaintService.class) {
+        synchronized (addLock) {
             addPaintSet.add(model);
         }
     }
 
     //移除model
     public static void PaintSetRemove(Model model) {
-        synchronized (ListerService.class) {
+        synchronized (removeLock) {
             removePaintSet.add(model);
         }
     }
@@ -33,12 +37,12 @@ public class PaintService {
     //画
     public static void paint(Graphics g) {
         if (!addPaintSet.isEmpty())
-            synchronized (PaintService.class) {
+            synchronized (addLock) {
                 paintSet.addAll(addPaintSet);
                 addPaintSet.clear();
             }
         if (!removePaintSet.isEmpty())
-            synchronized (ListerService.class) {
+            synchronized (removeLock) {
                 paintSet.removeAll(removePaintSet);
                 removePaintSet.clear();
             }

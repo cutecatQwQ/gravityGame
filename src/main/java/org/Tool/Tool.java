@@ -11,6 +11,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+
+import org.mainFrame.ListenService;
+import org.mainFrame.PaintService;
+import org.model.BoxAndTextModel;
+import org.mouseAndKeyLister.DraggableLister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,11 +41,11 @@ public class Tool {
     }
 
     //鼠标是否在盒子内
-    public static boolean inBox(int x, int y, int w, int h, int ex, int ey) {
+    public static boolean inBox(double x, double y, double w, double h, int ex, int ey) {
         return ex > x && ex < x + w && ey > y && ey < y + h;
     }
 
-    //绘制字符串 在宽为w高为h的一个框里面居中绘制
+    //绘制字符串 在宽为w高为h的一个框里面居中绘制,per是字体高度占据w的比例，一般在(0,1)之间
     public static void writeString(Graphics g, String text, String font, double per, Color color, int x, int y, int w, int h) {
         Font oldFont = g.getFont();
         Color oldColor = g.getColor();
@@ -64,6 +69,19 @@ public class Tool {
         g.setFont(oldFont);
     }
 
+    //debug用的
+    private final static BoxAndTextModel debug = new BoxAndTextModel(0,0,300,50,new Color(225,225,225),Color.black,0.66,"");
+    private static boolean isAdd = false;
+    public static void debug(String string){
+        if(!isAdd) {
+            isAdd = true;
+            debug.addLister(new DraggableLister(debug));
+            ListenService.mouseSetAdd(debug);
+            PaintService.PaintSetAdd(debug);
+        }
+        debug.setText(string);
+    }
+
     //delay毫秒后执行方法,使用ScheduledFuture的cancel()方法并传递true即可打断
     public static ScheduledFuture<?> after(long delay, Runnable runnable) {
         //几毫秒秒后执行方法 TimeUnit.MILLISECONDS表示单位是毫秒
@@ -73,9 +91,6 @@ public class Tool {
     public static ScheduledFuture<?> afterAndContinue(long delay, long period, Runnable runnable) {
         return scheduledExecutorService.scheduleAtFixedRate(runnable, delay, period, TimeUnit.MILLISECONDS);
     }
-
-
-
 
     //delay毫秒后执行方法,使用ScheduledFuture的cancel()方法并传递true即可打断
     public static ScheduledFuture<?> after(long delay, Object object, String methodName, Object... param) {

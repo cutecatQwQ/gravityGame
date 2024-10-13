@@ -1,6 +1,6 @@
 package org.gameStart.cityWar;
 
-import org.mainFrame.ListerService;
+import org.mainFrame.ListenService;
 import org.mainFrame.PaintService;
 import org.model.BoxAndTextModel;
 import org.mouseAndKeyLister.ButtonLister;
@@ -39,7 +39,7 @@ public class Buttons {
 
     public Buttons add(String s, Runnable runnable) {
         BoxAndTextModel boxAndTextModel = new BoxAndTextModel(x, y + boxAndTextModelHashMap.size() * h, w, h, color, fontColor, per, s);
-        boxAndTextModel.add(new ButtonLister(boxAndTextModel) {
+        boxAndTextModel.addLister(new ButtonLister(boxAndTextModel) {
                                 @Override
                                 public void mousePressed(MouseEvent e) {
                                 }
@@ -55,7 +55,7 @@ public class Buttons {
                             }
         );
         boxAndTextModelHashMap.put(s, boxAndTextModel);
-        ListerService.mouse.add(boxAndTextModel);
+        ListenService.mouseSetAdd(boxAndTextModel);
         PaintService.PaintSetAdd(boxAndTextModel);
         return this;
     }
@@ -63,7 +63,7 @@ public class Buttons {
     public Buttons remove(String s) {
         BoxAndTextModel boxAndTextModel = boxAndTextModelHashMap.get(s);
         if(boxAndTextModel == null) return this;
-        ListerService.mouse.remove(boxAndTextModel);
+        ListenService.mouseSetRemove(boxAndTextModel);
         PaintService.PaintSetRemove(boxAndTextModel);
         boxAndTextModelHashMap.remove(s);
         int i = 0;
@@ -78,13 +78,13 @@ public class Buttons {
         if (b) {
             for (String key : boxAndTextModelHashMap.keySet()) {
                 boxAndTextModelHashMap.get(key).paint();
-                ListerService.mouse.add(boxAndTextModelHashMap.get(key));
+                ListenService.mouseSetAdd(boxAndTextModelHashMap.get(key));
                 PaintService.PaintSetAdd(boxAndTextModelHashMap.get(key));
             }
 
         } else {
             for (String key : boxAndTextModelHashMap.keySet()) {
-                ListerService.mouse.remove(boxAndTextModelHashMap.get(key));
+                ListenService.mouseSetRemove(boxAndTextModelHashMap.get(key));
                 PaintService.PaintSetRemove(boxAndTextModelHashMap.get(key));
             }
         }

@@ -1,7 +1,7 @@
 package org.gameStart.testOne;
 
 
-import org.mainFrame.ListerService;
+import org.mainFrame.ListenService;
 import org.mainFrame.PaintService;
 import org.mouseAndKeyLister.DraggableLister;
 import org.mouseAndKeyLister.MouseAndKeyLister;
@@ -29,12 +29,12 @@ public class Graph {
 
     public void addPoint(Point point) {
         points.add(point);
-        point.add(new DraggableLister(point));
-        point.add(new MouseAndKeyLister() {
+        point.addLister(new DraggableLister(point));
+        point.addLister(new MouseAndKeyLister() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                background.setX(point.getX()- point.r);
-                background.setY(point.getY()- point.r);
+                background.setX(point.getXDouble()- point.r);
+                background.setY(point.getYDouble()- point.r);
                 PaintService.PaintSetAdd(background);
             }
 
@@ -45,12 +45,12 @@ public class Graph {
 
             @Override
             public void mouseDragged(MouseEvent e) {
-                background.setX(point.getX()-point.r);
-                background.setY(point.getY()- point.r);
+                background.setX(point.getXDouble()-point.r);
+                background.setY(point.getYDouble()- point.r);
                 point.lines.forEach(Line::paint);
             }
         });
-        ListerService.mouse.add(point);
+        ListenService.mouseSetAdd(point);
         PaintService.PaintSetAdd(point);
     }
     public void addLine(Point point1,Point point2) {

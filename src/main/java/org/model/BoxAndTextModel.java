@@ -6,7 +6,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class BoxAndTextModel extends Model {
-    Color color;
     Color fontColor;
     double per;
     String text;
@@ -18,7 +17,7 @@ public class BoxAndTextModel extends Model {
         this.setW(w);
         this.setH(h);
         this.setPriority(0);
-        this.color = color;
+        setColor(color);
         this.fontColor = fontColor;
         this.text = text;
         this.per = per;
@@ -30,7 +29,7 @@ public class BoxAndTextModel extends Model {
         g = image.createGraphics();
         // 设置抗锯齿以提高绘制质量
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g.setColor(color);
+        g.setColor(getColor());
         g.fillRect(0,0,this.getW(),this.getH());
         g.setColor(fontColor);
         Tool.writeString(g,text,"微软雅黑",per,fontColor,0,0,this.getW(),this.getH());
@@ -40,5 +39,6 @@ public class BoxAndTextModel extends Model {
 
     public void setText(String text) {
         this.text = text;
+        paint();
     }
 }

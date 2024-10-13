@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="" />
+    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="暂时无bug版本，修改了图片渲染会不清楚的情况">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/GameInit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CollideModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Tool/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Tool/Tool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/GameStart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Buttons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Buttons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Country.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Population.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Line.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/ListerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/ListerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/PaintService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/PaintService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/model/BoxAndTextModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/model/BoxAndTextModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mouseAndKeyLister/ButtonLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mouseAndKeyLister/ButtonLister.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,25 +45,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "last_opened_file_path": "D:/project/程序/Game - 副本",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/project/程序/Game - 副本&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.org.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.App" />
@@ -151,12 +168,37 @@
       <workItem from="1706169162441" duration="13000" />
       <workItem from="1719410341861" duration="264000" />
       <workItem from="1728742316158" duration="482000" />
-      <workItem from="1728744849305" duration="8856000" />
+      <workItem from="1728744849305" duration="9131000" />
+      <workItem from="1728791122130" duration="9673000" />
     </task>
+    <task id="LOCAL-00001" summary="暂时无bug版本，修改了图片渲染会不清楚的情况">
+      <option name="closed" value="true" />
+      <created>1728753877669</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1728753877669</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="暂时无bug版本，修改了图片渲染会不清楚的情况" />
+    <option name="LAST_COMMIT_MESSAGE" value="暂时无bug版本，修改了图片渲染会不清楚的情况" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -18,10 +18,10 @@ public class Line extends Model {
 
     @Override
     public void paint() {
-        setX(Math.min(point1.getX(), point2.getX())+point1.r);
-        setY(Math.min(point1.getY(), point2.getY())+point1.r);
-        setW(Math.max(Math.abs(point1.getX() - point2.getX()), 2));
-        setH(Math.max(Math.abs(point1.getY() - point2.getY()), 2));
+        setX(Math.min(point1.getXDouble(), point2.getXDouble())+point1.r);
+        setY(Math.min(point1.getYDouble(), point2.getYDouble())+point1.r);
+        setW(Math.max(Math.abs(point1.getXDouble() - point2.getXDouble()), 2));
+        setH(Math.max(Math.abs(point1.getYDouble() - point2.getYDouble()), 2));
         setImage(new BufferedImage(getW(), getH(), BufferedImage.TYPE_INT_ARGB));
         Graphics2D g = ((BufferedImage) getImage()).createGraphics();
         // 设置抗锯齿以提高绘制质量

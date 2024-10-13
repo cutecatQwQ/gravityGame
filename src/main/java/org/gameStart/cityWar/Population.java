@@ -1,7 +1,7 @@
 package org.gameStart.cityWar;
 
 import org.Tool.Tool;
-import org.mainFrame.ListerService;
+import org.mainFrame.ListenService;
 import org.mainFrame.PaintService;
 import org.model.BoxAndTextModel;
 import org.mouseAndKeyLister.MouseAndKeyLister;
@@ -22,11 +22,11 @@ public class Population {
         this.number = number;
         point = new Point(x,y,r,color,0);
         boxAndTextModel = new BoxAndTextModel(x-6-r,y-2*r,4*r,3*r/2,new Color(0,0,0,0),color,0.8,number+"");
-        point.add(new MouseAndKeyLister() {
+        point.addLister(new MouseAndKeyLister() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                background.setX(point.getX()- point.r);
-                background.setY(point.getY()- point.r);
+                background.setX(point.getXDouble()- point.r);
+                background.setY(point.getYDouble()- point.r);
                 PaintService.PaintSetAdd(background);
             }
 
@@ -37,11 +37,11 @@ public class Population {
 
             @Override
             public void mouseDragged(MouseEvent e) {
-                background.setX(point.getX()-point.r);
-                background.setY(point.getY()- point.r);
+                background.setX(point.getXDouble()-point.r);
+                background.setY(point.getYDouble()- point.r);
             }
         });
-        ListerService.mouse.add(point);
+        ListenService.mouseSetAdd(point);
         PaintService.PaintSetAdd(point);
         PaintService.PaintSetAdd(boxAndTextModel);
         Tool.afterAndContinue(0, 1000, this::numberChange);

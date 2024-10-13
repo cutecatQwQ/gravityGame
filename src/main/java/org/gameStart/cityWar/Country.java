@@ -16,6 +16,6 @@ public class Country {
         }
     };
     public Country(){
-//        PaintService.paintSet.add(mainCity);
+//        PaintService.paintSet.addLister(mainCity);
     }
 }
