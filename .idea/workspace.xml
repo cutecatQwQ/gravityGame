@@ -4,94 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="修改listenService，优化监听结构&#10;实现gravity的速度和加速度">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CircleModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/GravityInit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/RectangleModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/TimeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/ImageModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Tool/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Tool/Tool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/GameInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/GameInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/GameStart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Buttons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Buttons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Country.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Population.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CollideModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CollideModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/Time.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Line.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/ListenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/ListenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/MainJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/MainJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/PaintService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/PaintService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/model/BoxAndTextModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/BoxAndTextModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/model/ImageModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mouseAndKeyLister/ButtonLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/ButtonLister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mouseAndKeyLister/DraggableLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/DraggableLister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mouseAndKeyLister/KeyActionLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/KeyActionLister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mouseAndKeyLister/MouseAndKeyLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/MouseAndKeyLister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mouseAndKeyLister/WheelLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/WheelLister.java" afterDir="false" />
+    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="test merge">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 1
-}</component>
-  <component name="ProjectId" id="2Zvi7pEadxbfRH4xuiyLOwol5ns" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/project/程序/Game - 副本&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
-  <component name="RunManager" selected="Application.org.App">
+}]]></component>
+  <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.App" />
-      <module name="Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="org.App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.App" />
       <module name="Game" />
       <extension name="coverage">
@@ -104,126 +43,63 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppTest.testApp (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="true" type="JetRunConfigurationType">
       <module name="Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org" />
-      <option name="MAIN_CLASS_NAME" value="org.AppTest" />
-      <option name="METHOD_NAME" value="testApp" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppTest.testApp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <module name="Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.AppTest" />
-      <option name="METHOD_NAME" value="testApp" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.org.App" />
-        <item itemvalue="JUnit.AppTest.testApp (1)" />
-        <item itemvalue="JUnit.AppTest.testApp" />
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="" />
-      <created>1703308790668</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1703308790668</updated>
-      <workItem from="1703308791683" duration="26281000" />
-      <workItem from="1703344632887" duration="432000" />
-      <workItem from="1703345073079" duration="3552000" />
-      <workItem from="1703352409689" duration="1539000" />
-      <workItem from="1703392960167" duration="27444000" />
-      <workItem from="1703434144449" duration="2000" />
-      <workItem from="1703482195419" duration="322000" />
-      <workItem from="1703493514564" duration="4281000" />
-      <workItem from="1703504664754" duration="4430000" />
-      <workItem from="1703518861132" duration="8000" />
-      <workItem from="1703519463381" duration="3903000" />
-      <workItem from="1703560078854" duration="5098000" />
-      <workItem from="1703581896623" duration="4000" />
-      <workItem from="1703688028520" duration="1831000" />
-      <workItem from="1703741165017" duration="2713000" />
-      <workItem from="1703852004022" duration="3285000" />
-      <workItem from="1703911630912" duration="4942000" />
-      <workItem from="1703945978772" duration="4400000" />
-      <workItem from="1704032230496" duration="10921000" />
-      <workItem from="1705808558842" duration="153000" />
-      <workItem from="1705828120342" duration="21000" />
-      <workItem from="1705976636700" duration="36000" />
-      <workItem from="1705976705139" duration="12000" />
-      <workItem from="1705978473461" duration="549000" />
-      <workItem from="1706166310903" duration="704000" />
-      <workItem from="1706169162441" duration="13000" />
-      <workItem from="1719410341861" duration="264000" />
-      <workItem from="1728742316158" duration="482000" />
-      <workItem from="1728744849305" duration="9131000" />
-      <workItem from="1728791122130" duration="20165000" />
-      <workItem from="1728820056344" duration="622000" />
-      <workItem from="1728821269489" duration="595000" />
-      <workItem from="1728904198558" duration="2000" />
-    </task>
-    <task id="LOCAL-00001" summary="暂时无bug版本，修改了图片渲染会不清楚的情况">
+    <task id="LOCAL-00001" summary="test merge">
       <option name="closed" value="true" />
-      <created>1728753877669</created>
+      <created>1728911599858</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1728753877669</updated>
+      <updated>1728911599858</updated>
     </task>
-    <task id="LOCAL-00002" summary="修改listenService，优化监听结构&#10;实现gravity的速度和加速度">
-      <option name="closed" value="true" />
-      <created>1728803575932</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1728803575932</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="暂时无bug版本，修改了图片渲染会不清楚的情况" />
-    <MESSAGE value="修改listenService，优化监听结构&#10;实现gravity的速度和加速度" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改listenService，优化监听结构&#10;实现gravity的速度和加速度" />
+    <MESSAGE value="test merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="test merge" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
