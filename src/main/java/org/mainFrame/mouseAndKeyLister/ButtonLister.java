@@ -1,6 +1,6 @@
-package org.mouseAndKeyLister;
+package org.mainFrame.mouseAndKeyLister;
 
-import org.model.Model;
+import org.mainFrame.model.Model;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -37,7 +37,7 @@ public class ButtonLister extends MouseAndKeyLister {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        Graphics g = model.getImage().getGraphics();
+        Graphics g = model.getGraphics2D();
         g.setColor(new Color(0, 0, 0, 50));
         g.fillRect(0, 0, model.getW(), model.getH());
     }

@@ -1,7 +1,5 @@
 package org.gameStart.cityWar;
 
-import org.mainFrame.PaintService;
-
 import java.awt.*;
 import java.util.Random;
 

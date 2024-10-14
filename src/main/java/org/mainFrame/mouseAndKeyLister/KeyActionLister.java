@@ -1,7 +1,6 @@
-package org.mouseAndKeyLister;
+package org.mainFrame.mouseAndKeyLister;
 
-import org.Tool.Tool;
-import org.model.Model;
+import org.mainFrame.model.Model;
 
 import java.awt.event.KeyEvent;
 

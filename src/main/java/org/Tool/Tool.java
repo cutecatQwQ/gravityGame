@@ -12,10 +12,10 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import org.mainFrame.ListenService;
-import org.mainFrame.PaintService;
-import org.model.BoxAndTextModel;
-import org.mouseAndKeyLister.DraggableLister;
+import org.mainFrame.Service.ListenService;
+import org.mainFrame.Service.PaintService;
+import org.mainFrame.model.BoxAndTextModel;
+import org.mainFrame.mouseAndKeyLister.DraggableLister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -77,7 +77,7 @@ public class Tool {
             isAdd = true;
             debug.addLister(new DraggableLister(debug));
             ListenService.mouseSetAdd(debug);
-            PaintService.PaintSetAdd(debug);
+            PaintService.paintSetAdd(debug);
         }
         debug.setText(string);
     }

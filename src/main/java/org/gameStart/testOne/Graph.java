@@ -1,10 +1,10 @@
 package org.gameStart.testOne;
 
 
-import org.mainFrame.ListenService;
-import org.mainFrame.PaintService;
-import org.mouseAndKeyLister.DraggableLister;
-import org.mouseAndKeyLister.MouseAndKeyLister;
+import org.mainFrame.Service.ListenService;
+import org.mainFrame.Service.PaintService;
+import org.mainFrame.mouseAndKeyLister.DraggableLister;
+import org.mainFrame.mouseAndKeyLister.MouseAndKeyLister;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -35,12 +35,12 @@ public class Graph {
             public void mouseEntered(MouseEvent e) {
                 background.setX(point.getXDouble()- point.r);
                 background.setY(point.getYDouble()- point.r);
-                PaintService.PaintSetAdd(background);
+                PaintService.paintSetAdd(background);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                PaintService.PaintSetRemove(background);
+                PaintService.paintSetRemove(background);
             }
 
             @Override
@@ -51,13 +51,13 @@ public class Graph {
             }
         });
         ListenService.mouseSetAdd(point);
-        PaintService.PaintSetAdd(point);
+        PaintService.paintSetAdd(point);
     }
     public void addLine(Point point1,Point point2) {
         if(point1 == point2) return;
         Line line = new Line(point1,point2,Color.black,0);
         lines.add(line);
-        PaintService.PaintSetAdd(line);
+        PaintService.paintSetAdd(line);
         point1.addLine(line);
         point2.addLine(line);
     }

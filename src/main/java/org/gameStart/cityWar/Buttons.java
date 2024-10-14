@@ -1,9 +1,9 @@
 package org.gameStart.cityWar;
 
-import org.mainFrame.ListenService;
-import org.mainFrame.PaintService;
-import org.model.BoxAndTextModel;
-import org.mouseAndKeyLister.ButtonLister;
+import org.mainFrame.Service.ListenService;
+import org.mainFrame.Service.PaintService;
+import org.mainFrame.model.BoxAndTextModel;
+import org.mainFrame.mouseAndKeyLister.ButtonLister;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -56,7 +56,7 @@ public class Buttons {
         );
         boxAndTextModelHashMap.put(s, boxAndTextModel);
         ListenService.mouseSetAdd(boxAndTextModel);
-        PaintService.PaintSetAdd(boxAndTextModel);
+        PaintService.paintSetAdd(boxAndTextModel);
         return this;
     }
 
@@ -64,7 +64,7 @@ public class Buttons {
         BoxAndTextModel boxAndTextModel = boxAndTextModelHashMap.get(s);
         if(boxAndTextModel == null) return this;
         ListenService.mouseSetRemove(boxAndTextModel);
-        PaintService.PaintSetRemove(boxAndTextModel);
+        PaintService.paintSetRemove(boxAndTextModel);
         boxAndTextModelHashMap.remove(s);
         int i = 0;
         for (String key : boxAndTextModelHashMap.keySet()) {
@@ -79,13 +79,13 @@ public class Buttons {
             for (String key : boxAndTextModelHashMap.keySet()) {
                 boxAndTextModelHashMap.get(key).paint();
                 ListenService.mouseSetAdd(boxAndTextModelHashMap.get(key));
-                PaintService.PaintSetAdd(boxAndTextModelHashMap.get(key));
+                PaintService.paintSetAdd(boxAndTextModelHashMap.get(key));
             }
 
         } else {
             for (String key : boxAndTextModelHashMap.keySet()) {
                 ListenService.mouseSetRemove(boxAndTextModelHashMap.get(key));
-                PaintService.PaintSetRemove(boxAndTextModelHashMap.get(key));
+                PaintService.paintSetRemove(boxAndTextModelHashMap.get(key));
             }
         }
     }

@@ -1,9 +1,8 @@
 package org.gameStart.testOne;
 
-import org.model.Model;
+import org.mainFrame.model.Model;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Point extends Model {
@@ -23,10 +22,7 @@ public class Point extends Model {
 
     @Override
     public void paint() {
-        setImage(new BufferedImage(getW(), getH(), BufferedImage.TYPE_INT_ARGB));
-        Graphics2D g = ((BufferedImage) getImage()).createGraphics();
-        // 设置抗锯齿以提高绘制质量
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        Graphics2D g = getNewGraphics2D();
         g.setColor(new Color(0, 0, 0, 0));
         g.fillRect(0, 0, getW(), getH());
         g.setColor(color);

@@ -1,21 +1,22 @@
 package org.mainFrame;
 
-import org.Tool.Tool;
+import org.mainFrame.Service.ListenService;
+import org.mainFrame.Service.PaintService;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MainJFrame extends JFrame {
     //初始化屏幕
-    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+    private static final Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
     //双缓冲的图片
-    Image img;
+    private static Image img;
     //双缓冲的图片的画笔
-    Graphics g;
+    private static Graphics g;
     //渲染图片长宽和整个屏幕的比值
-    Integer index = 2;
+    public static final Double index = 2.5;
     //鼠标键盘监听service
-    ListerService listerService = new ListerService();
+    private static final ListenService listenService = new ListenService();
 
     public MainJFrame() {
         //取消边框
@@ -34,17 +35,17 @@ public class MainJFrame extends JFrame {
         PaintService.index = index;
 
         //添加监听事件
-        addLister(this.listerService);
+        addLister();
         // 启动所有线程
         start();
     }
 
     //添加鼠标键盘监听
-    private void addLister(ListerService listerService) {
-        addMouseListener(listerService);
-        addMouseMotionListener(listerService);
-        addMouseWheelListener(listerService);
-        addKeyListener(listerService);
+    private void addLister() {
+        addMouseListener(MainJFrame.listenService);
+        addMouseMotionListener(MainJFrame.listenService);
+        addMouseWheelListener(MainJFrame.listenService);
+        addKeyListener(MainJFrame.listenService);
     }
 
     //画
@@ -52,12 +53,12 @@ public class MainJFrame extends JFrame {
     public void paint(Graphics graphics) {
         //双缓冲
         if (img == null) {
-            img = createImage(index*dimension.width, index*dimension.height);
+            img = createImage((int)(index*dimension.width), (int)(index*dimension.height));
             g = img.getGraphics();
         }
         //绘制白板
         g.setColor(Color.WHITE);
-        g.fillRect(0, 0, index*dimension.width, index*dimension.height);
+        g.fillRect(0, 0, (int)(index*dimension.width), (int)(index*dimension.height));
         //绘制主程序
         PaintService.paint(g);
         //绘制双缓冲
@@ -71,7 +72,7 @@ public class MainJFrame extends JFrame {
             repaint();
             try {
                 //延时10毫秒
-                Thread.sleep(1);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

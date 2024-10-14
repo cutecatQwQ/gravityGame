@@ -1,7 +1,7 @@
-package org.mainFrame;
+package org.mainFrame.Service;
 
 import org.Tool.Tool;
-import org.model.Model;
+import org.mainFrame.model.Model;
 
 import java.awt.event.*;
 import java.util.TreeSet;

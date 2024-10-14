@@ -1,7 +1,6 @@
-package org.mouseAndKeyLister;
+package org.mainFrame.mouseAndKeyLister;
 
-import org.model.BoxAndTextModel;
-import org.model.Model;
+import org.mainFrame.model.Model;
 
 import java.awt.event.MouseWheelEvent;
 
@@ -15,10 +14,10 @@ public class WheelLister extends MouseAndKeyLister {
 
     public void mouseWheelMoved(MouseWheelEvent e) {
         int a = e.getWheelRotation();
-        model.wAdd(2 * a);
-        model.hAdd(2 * a);
-        model.xAdd(-a);
-        model.yAdd(-a);
+        model.wAdd(4 * a);
+        model.hAdd((model.getHDouble() * model.getWDouble()) /(model.getWDouble()-4*a) - model.getHDouble());
+        model.xAdd(-2*a);
+        model.yAdd(-((model.getHDouble() * model.getWDouble()) /(model.getWDouble()-4*a) - model.getHDouble())/2);
         model.paint();
     }
 }

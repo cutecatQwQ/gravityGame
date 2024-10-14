@@ -1,6 +1,6 @@
 package org.gameStart.testOne;
 
-import org.model.Model;
+import org.mainFrame.model.Model;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

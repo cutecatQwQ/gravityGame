@@ -4,21 +4,21 @@ import org.Tool.Tool;
 import org.gameStart.cityWar.Buttons;
 import org.gameStart.cityWar.Country;
 import org.gameStart.cityWar.Population;
-import org.gameStart.gravity.Time;
+import org.gameStart.gravity.GravityInit;
+import org.gameStart.gravity.TimeService;
 import org.gameStart.testOne.Graph;
 import org.gameStart.testOne.Line;
-import org.mainFrame.ListenService;
+import org.mainFrame.Service.ListenService;
 import org.mainFrame.MainJFrame;
-import org.mainFrame.PaintService;
-import org.model.BoxAndTextModel;
-import org.model.ImageModel;
-import org.model.Model;
-import org.mouseAndKeyLister.*;
+import org.mainFrame.Service.PaintService;
+import org.mainFrame.model.BoxAndTextModel;
+import org.mainFrame.model.ImageModel;
+import org.mainFrame.model.Model;
+import org.mainFrame.mouseAndKeyLister.*;
 import org.gameStart.testOne.Point;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public class GameStart {
@@ -35,12 +35,11 @@ public class GameStart {
     }
 
     private void test6(MainJFrame mainJFrame) {
-        Time.timeStart();
+        GravityInit.timeStart();
     }
 
     private void test5(MainJFrame mainJFrame) {
         Country country = new Country();
-
     }
 
     private void test4(MainJFrame mainJFrame) {
@@ -48,10 +47,10 @@ public class GameStart {
         final BoxAndTextModel[] boxAndTextModel = new BoxAndTextModel[1];
         Tool.afterAndContinue(0, 1000, () -> {
             boxAndTextModel[0] = new BoxAndTextModel(100, 100, 1400, 500, new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)), new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)), 0.7, "新年快乐");
-            PaintService.PaintSetAdd(boxAndTextModel[0]);
+            PaintService.paintSetAdd(boxAndTextModel[0]);
         });
         Tool.afterAndContinue(999, 1000, () -> {
-            PaintService.PaintSetRemove(boxAndTextModel[0]);
+            PaintService.paintSetRemove(boxAndTextModel[0]);
         });
     }
 
@@ -59,9 +58,7 @@ public class GameStart {
         @Override
         public void paint() {
             super.paint();
-            Graphics2D g = ((BufferedImage) getImage()).createGraphics();
-            // 设置抗锯齿以提高绘制质量
-            g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            Graphics2D g = getNewGraphics2D();
             //绘制透明色
             g.setComposite(AlphaComposite.getInstance(AlphaComposite.CLEAR, 0));
             g.fillOval(4, 4, 32, 32);
@@ -149,9 +146,7 @@ public class GameStart {
             @Override
             public void paint() {
                 super.paint();
-                Graphics2D g = ((BufferedImage) getImage()).createGraphics();
-                // 设置抗锯齿以提高绘制质量
-                g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                Graphics2D g = getNewGraphics2D();
                 //绘制透明色
                 g.setComposite(AlphaComposite.getInstance(AlphaComposite.CLEAR, 0));
                 g.fillOval(2, 2, 16, 16);
@@ -168,12 +163,12 @@ public class GameStart {
             public void mouseEntered(MouseEvent e) {
                 model.setX(point.getXDouble() - 5);
                 model.setY(point.getYDouble() - 5);
-                PaintService.PaintSetAdd(model);
+                PaintService.paintSetAdd(model);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                PaintService.PaintSetRemove(model);
+                PaintService.paintSetRemove(model);
             }
 
             @Override
@@ -183,8 +178,8 @@ public class GameStart {
                 line.paint();
             }
         });
-        PaintService.PaintSetAdd(point);
-        PaintService.PaintSetAdd(line);
+        PaintService.paintSetAdd(point);
+        PaintService.paintSetAdd(line);
         ListenService.mouseSetAdd(point);
 
         point1.addLister(new DraggableLister(point1));
@@ -193,12 +188,12 @@ public class GameStart {
             public void mouseEntered(MouseEvent e) {
                 model.setX(point1.getXDouble() - 5);
                 model.setY(point1.getYDouble() - 5);
-                PaintService.PaintSetAdd(model);
+                PaintService.paintSetAdd(model);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                PaintService.PaintSetRemove(model);
+                PaintService.paintSetRemove(model);
             }
 
             @Override
@@ -208,33 +203,34 @@ public class GameStart {
                 line.paint();
             }
         });
-        PaintService.PaintSetAdd(point1);
+        PaintService.paintSetAdd(point1);
         ListenService.mouseSetAdd(point1);
     }
 
     private void test0(MainJFrame mainJFrame) {
         ImageModel imageModel = new ImageModel(500, 500, 250, 200, "photo/头像.png");
         imageModel.addLister(new DraggableLister(imageModel));
-        PaintService.PaintSetAdd(imageModel);
+        imageModel.addLister(new WheelLister(imageModel));
+        PaintService.paintSetAdd(imageModel);
         ListenService.mouseSetAdd(imageModel);
 
         ImageModel Gao = new ImageModel(0, 0, 100, 100, -1, "photo/高晓蕊.jpg");
         Gao.addLister(new DraggableLister(Gao));
         Gao.addLister(new KeyActionLister(Gao));
-        PaintService.PaintSetAdd(Gao);
+        PaintService.paintSetAdd(Gao);
         ListenService.mouseSetAdd(Gao);
         ListenService.keySetAdd(Gao);
 
         BoxAndTextModel boxAndTextModel = new BoxAndTextModel(0, 0, 200, 50, new Color(0, 0, 0, 0), Color.blue, 0.66, "点击开始");
         boxAndTextModel.addLister(new ButtonLister(boxAndTextModel));
-        PaintService.PaintSetAdd(boxAndTextModel);
+        PaintService.paintSetAdd(boxAndTextModel);
         ListenService.mouseSetAdd(boxAndTextModel);
 
 //        Tool.after(3000, "", "addLister", "");
 
-        BoxAndTextModel boxAndTextModel1 = new BoxAndTextModel(0, 50, 1960 * 4 / 50, 1080 * 4 / 50, Color.WHITE, Color.BLACK, 0.33, "原神");
+        BoxAndTextModel boxAndTextModel1 = new BoxAndTextModel(0, 50, 1960 * 4 / 50.0, 1080 * 4 / 50.0, new Color(225,225,225), Color.BLACK, 0.33, "原神");
         boxAndTextModel1.addLister(new WheelLister(boxAndTextModel1));
-        PaintService.PaintSetAdd(boxAndTextModel1);
+        PaintService.paintSetAdd(boxAndTextModel1);
         ListenService.mouseSetAdd(boxAndTextModel1);
 
 //        new Thread(() -> {

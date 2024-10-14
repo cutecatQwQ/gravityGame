@@ -1,9 +1,9 @@
 package org.gameStart;
 
-import org.mainFrame.ListenService;
+import org.mainFrame.Service.ListenService;
 import org.mainFrame.MainJFrame;
-import org.model.Model;
-import org.mouseAndKeyLister.MouseAndKeyLister;
+import org.mainFrame.model.Model;
+import org.mainFrame.mouseAndKeyLister.MouseAndKeyLister;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;

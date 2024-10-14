@@ -1,6 +1,6 @@
-package org.mainFrame;
+package org.mainFrame.Service;
 
-import org.model.Model;
+import org.mainFrame.model.Model;
 
 import java.awt.*;
 import java.util.Iterator;
@@ -18,17 +18,17 @@ public class PaintService {
     //移除锁
     private static final Object removeLock = new Object();
     //渲染图片长宽和整个屏幕的比值
-    public static Integer index;
+    public static Double index;
 
     //添加model
-    public static void PaintSetAdd(Model model) {
+    public static void paintSetAdd(Model model) {
         synchronized (addLock) {
             addPaintSet.add(model);
         }
     }
 
     //移除model
-    public static void PaintSetRemove(Model model) {
+    public static void paintSetRemove(Model model) {
         synchronized (removeLock) {
             removePaintSet.add(model);
         }
@@ -51,7 +51,7 @@ public class PaintService {
         Model model;
         while (descendingIterator.hasNext()) {
             model = descendingIterator.next();
-            g.drawImage(model.getImage(), index * model.getX(), index * model.getY(), index * model.getW(), index * model.getH(), null);
+            g.drawImage(model.getImage(), (int)(index * model.getXDouble()), (int)(index * model.getYDouble()), (int)(index * model.getWDouble()), (int)(index * model.getHDouble()), null);
         }
     }
 }

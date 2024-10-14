@@ -1,10 +1,10 @@
 package org.gameStart.cityWar;
 
 import org.Tool.Tool;
-import org.mainFrame.ListenService;
-import org.mainFrame.PaintService;
-import org.model.BoxAndTextModel;
-import org.mouseAndKeyLister.MouseAndKeyLister;
+import org.mainFrame.Service.ListenService;
+import org.mainFrame.Service.PaintService;
+import org.mainFrame.model.BoxAndTextModel;
+import org.mainFrame.mouseAndKeyLister.MouseAndKeyLister;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -27,12 +27,12 @@ public class Population {
             public void mouseEntered(MouseEvent e) {
                 background.setX(point.getXDouble()- point.r);
                 background.setY(point.getYDouble()- point.r);
-                PaintService.PaintSetAdd(background);
+                PaintService.paintSetAdd(background);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                PaintService.PaintSetRemove(background);
+                PaintService.paintSetRemove(background);
             }
 
             @Override
@@ -42,8 +42,8 @@ public class Population {
             }
         });
         ListenService.mouseSetAdd(point);
-        PaintService.PaintSetAdd(point);
-        PaintService.PaintSetAdd(boxAndTextModel);
+        PaintService.paintSetAdd(point);
+        PaintService.paintSetAdd(boxAndTextModel);
         Tool.afterAndContinue(0, 1000, this::numberChange);
     }
     public void numberChange(){
