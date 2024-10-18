@@ -4,8 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="test merge">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="test lock">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Tool/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Tool/Tool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/GameInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/GameInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/GameStart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Buttons.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Country.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Point.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/cityWar/Population.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/GravityInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/GravityInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/TimeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/TimeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/MainJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/MainJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/ListenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/ListenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/PaintService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/PaintService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,10 +38,24 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2ncQw3JQB0FwCa9WFQaGrmWcUFd" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "node.js.selected.package.tslint": "(autodetect)"
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
@@ -43,25 +72,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="Game" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Game" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="test merge">
       <option name="closed" value="true" />
@@ -71,8 +88,19 @@
       <option name="project" value="LOCAL" />
       <updated>1728911599858</updated>
     </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="test lock" />
+      <created>1729270122626</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729270122626</updated>
+      <workItem from="1729270124473" duration="5724000" />
+    </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

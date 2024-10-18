@@ -12,6 +12,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import org.mainFrame.MainJFrame;
 import org.mainFrame.Service.ListenService;
 import org.mainFrame.Service.PaintService;
 import org.mainFrame.model.BoxAndTextModel;
@@ -70,14 +71,15 @@ public class Tool {
     }
 
     //debug用的
-    private final static BoxAndTextModel debug = new BoxAndTextModel(0,0,300,50,new Color(225,225,225),Color.black,0.66,"");
+    private final static BoxAndTextModel debug = new BoxAndTextModel(0, 0, 300, 50, new Color(225, 225, 225), Color.black, 0.66, "");
     private static boolean isAdd = false;
-    public static void debug(String string){
-        if(!isAdd) {
+
+    public static void debug(String string, MainJFrame mainJFrame) {
+        if (!isAdd) {
             isAdd = true;
             debug.addLister(new DraggableLister(debug));
-            ListenService.mouseSetAdd(debug);
-            PaintService.paintSetAdd(debug);
+            mainJFrame.getListenService().mouseSetAdd(debug);
+            mainJFrame.getPaintService().paintSetAdd(debug);
         }
         debug.setText(string);
     }
@@ -87,6 +89,7 @@ public class Tool {
         //几毫秒秒后执行方法 TimeUnit.MILLISECONDS表示单位是毫秒
         return scheduledExecutorService.schedule(runnable, delay, TimeUnit.MILLISECONDS);
     }
+
     //delay毫秒后执行方法,并且以period毫秒为周期的频率重复,使用ScheduledFuture的cancel()方法并传递true即可打断
     public static ScheduledFuture<?> afterAndContinue(long delay, long period, Runnable runnable) {
         return scheduledExecutorService.scheduleAtFixedRate(runnable, delay, period, TimeUnit.MILLISECONDS);
@@ -97,10 +100,12 @@ public class Tool {
         //几毫秒秒后执行方法
         return scheduledExecutorService.schedule(() -> run(object, methodName, param), delay, TimeUnit.MILLISECONDS);
     }
+
     //delay毫秒后执行方法,并且以period毫秒为周期的频率重复,使用ScheduledFuture的cancel()方法并传递true即可打断
     public static ScheduledFuture<?> afterAndContinue(long delay, long period, Object object, String methodName, Object... param) {
         return scheduledExecutorService.scheduleAtFixedRate(() -> run(object, methodName, param), delay, period, TimeUnit.MILLISECONDS);
     }
+
     //反射调用方法，参数分别是：使用方法的对象，方法名，传递的参数
     private static void run(Object object, String methodName, Object... param) {
         //获取参数的类型数组
@@ -129,7 +134,7 @@ public class Tool {
                         // 调用方法，并传递参数
                         method.invoke(object, param);
                         break;
-                    }catch (Exception e) {
+                    } catch (Exception e) {
                         log.error("exception message", e);
                     }
                 }

@@ -1,11 +1,7 @@
 package org.gameStart;
 
 import org.Tool.Tool;
-import org.gameStart.cityWar.Buttons;
-import org.gameStart.cityWar.Country;
-import org.gameStart.cityWar.Population;
 import org.gameStart.gravity.GravityInit;
-import org.gameStart.gravity.TimeService;
 import org.gameStart.testOne.Graph;
 import org.gameStart.testOne.Line;
 import org.mainFrame.Service.ListenService;
@@ -28,18 +24,12 @@ public class GameStart {
 //        test0(mainJFrame);
 //        test1(mainJFrame);
 //        test2(mainJFrame);
-//        test3(mainJFrame);
 //        test4(mainJFrame);
-//        test5(mainJFrame);
         test6(mainJFrame);
     }
 
     private void test6(MainJFrame mainJFrame) {
-        GravityInit.timeStart();
-    }
-
-    private void test5(MainJFrame mainJFrame) {
-        Country country = new Country();
+        GravityInit.timeStart(mainJFrame);
     }
 
     private void test4(MainJFrame mainJFrame) {
@@ -47,10 +37,10 @@ public class GameStart {
         final BoxAndTextModel[] boxAndTextModel = new BoxAndTextModel[1];
         Tool.afterAndContinue(0, 1000, () -> {
             boxAndTextModel[0] = new BoxAndTextModel(100, 100, 1400, 500, new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)), new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)), 0.7, "新年快乐");
-            PaintService.paintSetAdd(boxAndTextModel[0]);
+            mainJFrame.getPaintService().paintSetAdd(boxAndTextModel[0]);
         });
         Tool.afterAndContinue(999, 1000, () -> {
-            PaintService.paintSetRemove(boxAndTextModel[0]);
+            mainJFrame.getPaintService().paintSetRemove(boxAndTextModel[0]);
         });
     }
 
@@ -65,57 +55,6 @@ public class GameStart {
         }
     };
 
-    private void test3(MainJFrame mainJFrame) {
-        Population population = new Population(100, 100, 10, 100, Color.black) {
-            @Override
-            public void numberChange() {
-                super.numberChange();
-                number--;
-            }
-        };
-        Buttons buttons = new Buttons(0, 0, 50, 25, Color.white, Color.black, 0.7);
-        Random random = new Random();
-        buttons.add("添加", () -> {
-            buttons.add(random.nextInt(100) * 10 + "", () -> {
-            });
-        });
-        buttons.add("1", () -> {
-            buttons.remove("添加");
-        });
-        buttons.add("2", () -> {
-            buttons.add("添加", () -> {
-                buttons.add(random.nextInt(100) * 10 + "", () -> {
-                });
-            });
-        });
-        buttons.add("关闭", () -> {
-            buttons.setBoolean(false);
-        });
-        buttons.setBoolean(false);
-        population.point.addLister(new MouseAndKeyLister() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getButton() == MouseEvent.BUTTON3) {
-                    buttons.setXAndY(e.getX(), e.getY());
-                    buttons.setBoolean(true);
-                }
-
-            }
-        });
-        Model model = new ImageModel(0, 0, mainJFrame.getWidth(), mainJFrame.getHeight(), 10, "");
-        model.addLister(new MouseAndKeyLister() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getButton() != MouseEvent.BUTTON3) buttons.setBoolean(false);
-                else {
-                    buttons.setXAndY(e.getX(), e.getY());
-                    buttons.setBoolean(true);
-                }
-            }
-        });
-        ListenService.mouseSetAdd(model);
-    }
-
     private void test2(MainJFrame mainJFrame) {
         Random random = new Random();
         Graph graph = new Graph();
@@ -123,13 +62,13 @@ public class GameStart {
         for (int i = 0; i < points.length; i++) {
 //            points[i] = new Point(10, 10, 5,Color.red,0);
             points[i] = new Point(random.nextInt(1500) + 10, random.nextInt(800) + 10, 10, Color.red, 0);
-            graph.addPoint(points[i]);
+            graph.addPoint(points[i],mainJFrame);
         }
 
         for (int i = 0; i < points.length; i++) {
             for (int j = 0; j < points.length; j++) {
                 if (random.nextBoolean() && random.nextBoolean() && random.nextBoolean() && random.nextBoolean())
-                    graph.addLine(points[i], points[j]);
+                    graph.addLine(points[i], points[j],mainJFrame);
             }
         }
 //        for (int i = 0; i < points.length; i++) {
@@ -163,12 +102,12 @@ public class GameStart {
             public void mouseEntered(MouseEvent e) {
                 model.setX(point.getXDouble() - 5);
                 model.setY(point.getYDouble() - 5);
-                PaintService.paintSetAdd(model);
+                mainJFrame.getPaintService().paintSetAdd(model);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                PaintService.paintSetRemove(model);
+                mainJFrame.getPaintService().paintSetRemove(model);
             }
 
             @Override
@@ -178,9 +117,9 @@ public class GameStart {
                 line.paint();
             }
         });
-        PaintService.paintSetAdd(point);
-        PaintService.paintSetAdd(line);
-        ListenService.mouseSetAdd(point);
+        mainJFrame.getPaintService().paintSetAdd(point);
+        mainJFrame.getPaintService().paintSetAdd(line);
+        mainJFrame.getListenService().mouseSetAdd(point);
 
         point1.addLister(new DraggableLister(point1));
         point1.addLister(new MouseAndKeyLister() {
@@ -188,12 +127,12 @@ public class GameStart {
             public void mouseEntered(MouseEvent e) {
                 model.setX(point1.getXDouble() - 5);
                 model.setY(point1.getYDouble() - 5);
-                PaintService.paintSetAdd(model);
+                mainJFrame.getPaintService().paintSetAdd(model);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                PaintService.paintSetRemove(model);
+                mainJFrame.getPaintService().paintSetRemove(model);
             }
 
             @Override
@@ -203,35 +142,35 @@ public class GameStart {
                 line.paint();
             }
         });
-        PaintService.paintSetAdd(point1);
-        ListenService.mouseSetAdd(point1);
+        mainJFrame.getPaintService().paintSetAdd(point1);
+        mainJFrame.getListenService().mouseSetAdd(point1);
     }
 
     private void test0(MainJFrame mainJFrame) {
         ImageModel imageModel = new ImageModel(500, 500, 250, 200, "photo/头像.png");
         imageModel.addLister(new DraggableLister(imageModel));
         imageModel.addLister(new WheelLister(imageModel));
-        PaintService.paintSetAdd(imageModel);
-        ListenService.mouseSetAdd(imageModel);
+        mainJFrame.getPaintService().paintSetAdd(imageModel);
+        mainJFrame.getListenService().mouseSetAdd(imageModel);
 
         ImageModel Gao = new ImageModel(0, 0, 100, 100, -1, "photo/高晓蕊.jpg");
         Gao.addLister(new DraggableLister(Gao));
         Gao.addLister(new KeyActionLister(Gao));
-        PaintService.paintSetAdd(Gao);
-        ListenService.mouseSetAdd(Gao);
-        ListenService.keySetAdd(Gao);
+        mainJFrame.getPaintService().paintSetAdd(Gao);
+        mainJFrame.getListenService().mouseSetAdd(Gao);
+        mainJFrame.getListenService().keySetAdd(Gao);
 
         BoxAndTextModel boxAndTextModel = new BoxAndTextModel(0, 0, 200, 50, new Color(0, 0, 0, 0), Color.blue, 0.66, "点击开始");
         boxAndTextModel.addLister(new ButtonLister(boxAndTextModel));
-        PaintService.paintSetAdd(boxAndTextModel);
-        ListenService.mouseSetAdd(boxAndTextModel);
+        mainJFrame.getPaintService().paintSetAdd(boxAndTextModel);
+        mainJFrame.getListenService().mouseSetAdd(boxAndTextModel);
 
 //        Tool.after(3000, "", "addLister", "");
 
         BoxAndTextModel boxAndTextModel1 = new BoxAndTextModel(0, 50, 1960 * 4 / 50.0, 1080 * 4 / 50.0, new Color(225,225,225), Color.BLACK, 0.33, "原神");
         boxAndTextModel1.addLister(new WheelLister(boxAndTextModel1));
-        PaintService.paintSetAdd(boxAndTextModel1);
-        ListenService.mouseSetAdd(boxAndTextModel1);
+        mainJFrame.getPaintService().paintSetAdd(boxAndTextModel1);
+        mainJFrame.getListenService().mouseSetAdd(boxAndTextModel1);
 
 //        new Thread(() -> {
 //            Random random = new Random();

@@ -24,6 +24,6 @@ public class GameInit {
                 }
             }
         });
-        ListenService.keySetAdd(esc);
+        mainJFrame.getListenService().keySetAdd(esc);
     }
 }

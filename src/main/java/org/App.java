@@ -1,5 +1,6 @@
 package org;
 
+import org.Tool.Tool;
 import org.gameStart.GameStart;
 import org.mainFrame.MainJFrame;
 
@@ -20,5 +21,12 @@ public class App
         MainJFrame mainJFrame = new MainJFrame();
         //游戏入口
         GameStart gameStart = new GameStart(mainJFrame);
+
+//        Tool.after(3000,()->{
+//            //框架入口
+//            MainJFrame mainJFrame1 = new MainJFrame();
+//            //游戏入口
+//            GameStart gameStart1 = new GameStart(mainJFrame1);
+//        });
     }
 }

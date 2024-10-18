@@ -8,60 +8,60 @@ import java.util.TreeSet;
 
 public class ListenService implements MouseListener, MouseMotionListener, MouseWheelListener, KeyListener {
     //当前焦点所在的model
-    private static Model focus;
+    private Model focus;
     //鼠标所在的model
-    private static Model hover;
+    private Model hover;
 
     //鼠标事件的model集合
-    private static final TreeSet<Model> mouse = new TreeSet<>();
+    private final TreeSet<Model> mouse = new TreeSet<>();
     //待添加集合
-    private static final TreeSet<Model> addMouseSet = new TreeSet<>();
+    private final TreeSet<Model> addMouseSet = new TreeSet<>();
     //待移除集合
-    private static final TreeSet<Model> removeMouseSet = new TreeSet<>();
+    private final TreeSet<Model> removeMouseSet = new TreeSet<>();
     //鼠标集合添加锁
-    private static final Object mouseAddLock = new Object();
+    private final Object mouseAddLock = new Object();
     //鼠标集合移除锁
-    private static final Object mouseRemoveLock = new Object();
+    private final Object mouseRemoveLock = new Object();
 
     //键盘事件的model集合
-    private static final TreeSet<Model> key = new TreeSet<>();
+    private final TreeSet<Model> key = new TreeSet<>();
     //待添加集合
-    private static final TreeSet<Model> addKeySet = new TreeSet<>();
+    private final TreeSet<Model> addKeySet = new TreeSet<>();
     //待移除集合
-    private static final TreeSet<Model> removeKeySet = new TreeSet<>();
+    private final TreeSet<Model> removeKeySet = new TreeSet<>();
     //键盘集合添加锁
-    private static final Object keyAddLock = new Object();
+    private final Object keyAddLock = new Object();
     //键盘集合移除锁
-    private static final Object keyRemoveLock = new Object();
+    private final Object keyRemoveLock = new Object();
 
     //添加mouse model
-    public static void mouseSetAdd(Model model) {
+    public void mouseSetAdd(Model model) {
         synchronized (mouseAddLock) {
             addMouseSet.add(model);
         }
     }
     //移除mouse model
-    public static void mouseSetRemove(Model model) {
+    public void mouseSetRemove(Model model) {
         synchronized (mouseRemoveLock) {
             removeMouseSet.add(model);
         }
     }
 
     //添加key model
-    public static void keySetAdd(Model model) {
+    public void keySetAdd(Model model) {
         synchronized (keyAddLock) {
             addKeySet.add(model);
         }
     }
     //移除key model
-    public static void keySetRemove(Model model) {
+    public void keySetRemove(Model model) {
         synchronized (keyRemoveLock) {
             removeKeySet.add(model);
         }
     }
 
     //鼠标集合处理
-    private static void mouseAddAndRemove(){
+    private void mouseAddAndRemove(){
         if (!addMouseSet.isEmpty())
             synchronized (mouseAddLock) {
                 mouse.addAll(addMouseSet);
@@ -145,7 +145,7 @@ public class ListenService implements MouseListener, MouseMotionListener, MouseW
     }
 
     //键盘集合处理
-    private static void keyAddAndRemove(){
+    private void keyAddAndRemove(){
         if (!addKeySet.isEmpty())
             synchronized (keyAddLock) {
                 key.addAll(addKeySet);
