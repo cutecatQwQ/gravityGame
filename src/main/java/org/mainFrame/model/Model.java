@@ -69,19 +69,19 @@ public abstract class Model implements Comparable<Model> {
     }
 
     //位置++方法
-    public void xAdd(double ax) {
+    public void addX(double ax) {
         x += ax;
     }
 
-    public void yAdd(double ay) {
+    public void addY(double ay) {
         y += ay;
     }
 
-    public void wAdd(double aw) {
+    public void addW(double aw) {
         w += aw;
     }
 
-    public void hAdd(double ah) {
+    public void addH(double ah) {
         h += ah;
     }
 

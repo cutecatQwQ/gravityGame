@@ -1,5 +1,6 @@
 package org.mainFrame.Service;
 
+import org.mainFrame.MainJFrame;
 import org.mainFrame.model.Model;
 
 import java.awt.*;
@@ -59,7 +60,12 @@ public class PaintService {
         Model model;
         while (descendingIterator.hasNext()) {
             model = descendingIterator.next();
-            g.drawImage(model.getImage(), (int)(index * model.getXDouble()), (int)(index * model.getYDouble()), (int)(index * model.getWDouble()), (int)(index * model.getHDouble()), null);
+            //下面注释是坐标变换的尝试，问题有鼠标位置需要改变    尝试设置整个坐标系的变换，可以通过拖动看到超出屏幕的事物（未完成）
+            g.drawImage(model.getImage(),
+                    (int)(index * model.getXDouble()),
+                    (int)(/*MainJFrame.dimension.getHeight()*MainJFrame.index-*/index * model.getYDouble()),
+                    (int)(index * model.getWDouble()),
+                    (int)(/*-*/index * model.getHDouble()), null);
         }
     }
 }

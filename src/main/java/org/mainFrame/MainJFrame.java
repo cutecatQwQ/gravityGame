@@ -8,8 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainJFrame extends JFrame {
-    //初始化屏幕
-    private static final Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+    //初始化屏幕 1536 864
+    public static final Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
     //双缓冲的图片
     private Image img;
     //双缓冲的图片的画笔

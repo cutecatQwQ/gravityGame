@@ -22,6 +22,7 @@ public class App
         //游戏入口
         GameStart gameStart = new GameStart(mainJFrame);
 
+        //多窗口
 //        Tool.after(3000,()->{
 //            //框架入口
 //            MainJFrame mainJFrame1 = new MainJFrame();

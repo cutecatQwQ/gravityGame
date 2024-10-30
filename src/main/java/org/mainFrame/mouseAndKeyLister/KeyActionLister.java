@@ -13,10 +13,10 @@ public class KeyActionLister extends MouseAndKeyLister {
         this.model = model;
         new Thread(() -> {
             while(true){
-                model.xAdd(a?-10:0);
-                model.xAdd(d?10:0);
-                model.yAdd(w?-10:0);
-                model.yAdd(s?10:0);
+                model.addX(a?-10:0);
+                model.addX(d?10:0);
+                model.addY(w?-10:0);
+                model.addY(s?10:0);
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {

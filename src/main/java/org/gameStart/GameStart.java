@@ -95,7 +95,7 @@ public class GameStart {
 
         Point point = new Point(1200, 200, 5, Color.black, -1);
         Line line = new Line(point1, point, Color.black, 0);
-        line.addLister(new ButtonLister(line));
+        line.addLister(new ButtonLister(line,mainJFrame));
         point.addLister(new DraggableLister(point));
         point.addLister(new MouseAndKeyLister() {
             @Override
@@ -161,7 +161,7 @@ public class GameStart {
         mainJFrame.getListenService().keySetAdd(Gao);
 
         BoxAndTextModel boxAndTextModel = new BoxAndTextModel(0, 0, 200, 50, new Color(0, 0, 0, 0), Color.blue, 0.66, "点击开始");
-        boxAndTextModel.addLister(new ButtonLister(boxAndTextModel));
+        boxAndTextModel.addLister(new ButtonLister(boxAndTextModel,mainJFrame));
         mainJFrame.getPaintService().paintSetAdd(boxAndTextModel);
         mainJFrame.getListenService().mouseSetAdd(boxAndTextModel);
 
@@ -180,10 +180,10 @@ public class GameStart {
 //                } catch (InterruptedException e) {
 //                    throw new RuntimeException(e);
 //                }
-//                imageModel.xAdd((random.nextInt(3)-1)*2);
-//                imageModel.yAdd((random.nextInt(3)-1)*2);
-//                imageModel.wAdd((random.nextInt(3)-1)*2);
-//                imageModel.hAdd((random.nextInt(3)-1)*2);
+//                imageModel.addX((random.nextInt(3)-1)*2);
+//                imageModel.addY((random.nextInt(3)-1)*2);
+//                imageModel.addW((random.nextInt(3)-1)*2);
+//                imageModel.addH((random.nextInt(3)-1)*2);
 //            }
 //        }).start();
     }

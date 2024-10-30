@@ -39,28 +39,32 @@ public abstract class CollideModel extends Model {
     //时间流逝
     public void timeAdd(Integer time) {
         for (int i = 0; i < time; i++) {
-            xAdd(v.get(0));
-            yAdd(-v.get(1));
+            addX(v.get(0));
+            addY(-v.get(1));
             addV(a);
         }
     }
     //++方法
     public void addV(Vector<Double> av){
-        this.v.set(0,this.v.get(0)+av.get(0));
-        this.v.set(1,this.v.get(1)+av.get(1));
+        for (int i = 0; i < n; i++) {
+            this.v.set(i,this.v.get(i)+av.get(i));
+        }
     }
     public void addA(Vector<Double> aa){
-        this.a.set(0,this.a.get(0)+aa.get(0));
-        this.a.set(1,this.a.get(1)+aa.get(1));
+        for (int i = 0; i < n; i++) {
+            this.a.set(i,this.a.get(i)+aa.get(i));
+        }
     }
     //set方法
     public void setV(Vector<Double> v){
-        this.v.set(0,v.get(0));
-        this.v.set(1,v.get(1));
+        for (int i = 0; i < n; i++) {
+            this.v.set(i,v.get(i));
+        }
     }
     public void setA(Vector<Double> a){
-        this.a.set(0,a.get(0));
-        this.a.set(1,a.get(1));
+        for (int i = 0; i < n; i++) {
+            this.a.set(i,a.get(i));
+        }
     }
 
     public boolean isStable() {

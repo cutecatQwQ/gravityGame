@@ -57,7 +57,15 @@ public class TimeService {
         for (CollideModel leaf : timeSet) {
             leaf.timeAdd(speedOfTime);
         }
+
+        //碰撞检测，每次时间流逝的时候执行一次
+        collisionDetection();
+
         Tool.debug(++time + "",mainJFrame);
+    }
+
+    //碰撞检测
+    private void collisionDetection() {
     }
 
     public int getTime() {

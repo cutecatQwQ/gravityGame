@@ -14,10 +14,10 @@ public class WheelLister extends MouseAndKeyLister {
 
     public void mouseWheelMoved(MouseWheelEvent e) {
         int a = e.getWheelRotation();
-        model.wAdd(4 * a);
-        model.hAdd((model.getHDouble() * model.getWDouble()) /(model.getWDouble()-4*a) - model.getHDouble());
-        model.xAdd(-2*a);
-        model.yAdd(-((model.getHDouble() * model.getWDouble()) /(model.getWDouble()-4*a) - model.getHDouble())/2);
+        model.addW(4 * a);
+        model.addH((model.getHDouble() * model.getWDouble()) /(model.getWDouble()-4*a) - model.getHDouble());
+        model.addX(-2*a);
+        model.addY(-((model.getHDouble() * model.getWDouble()) /(model.getWDouble()-4*a) - model.getHDouble())/2);
         model.paint();
     }
 }
