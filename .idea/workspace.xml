@@ -4,26 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="设置多页面（tool的debug方法使用时存在问题，只显示在第一个调用的页面上）">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
+    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="            //下面注释是坐标变换的尝试，问题有鼠标位置需要改变    尝试设置整个坐标系的变换，可以通过拖动看到超出屏幕的事物（未完成）&#10;优化部分代码，设置时间暂停按钮功能">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/QuadNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/GameStart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CircleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CircleModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CollideModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CollideModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/GravityInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/GravityInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/RectangleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/RectangleModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/TimeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/TimeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/MainJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/MainJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/PaintService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/PaintService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/ButtonLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/ButtonLister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/KeyActionLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/KeyActionLister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/WheelLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/WheelLister.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -99,7 +99,10 @@
       <workItem from="1729304412792" duration="238000" />
       <workItem from="1729523317145" duration="13000" />
       <workItem from="1730288895064" duration="5000" />
-      <workItem from="1730288907262" duration="8779000" />
+      <workItem from="1730288907262" duration="9191000" />
+      <workItem from="1730509039031" duration="2090000" />
+      <workItem from="1730541966950" duration="5339000" />
+      <workItem from="1730551541784" duration="9882000" />
     </task>
     <task id="LOCAL-00002" summary="设置多页面（tool的debug方法使用时存在问题，只显示在第一个调用的页面上）">
       <option name="closed" value="true" />
@@ -109,7 +112,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729276222998</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="            //下面注释是坐标变换的尝试，问题有鼠标位置需要改变    尝试设置整个坐标系的变换，可以通过拖动看到超出屏幕的事物（未完成）&#10;优化部分代码，设置时间暂停按钮功能">
+      <option name="closed" value="true" />
+      <created>1730298053648</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730298053648</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,7 +137,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="origin/dev_cutecatQwQ" />
                       </list>
                     </value>
                   </entry>
@@ -141,18 +152,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test merge" />
     <MESSAGE value="设置多页面（tool的debug方法使用时存在问题，只显示在第一个调用的页面上）" />
-    <option name="LAST_COMMIT_MESSAGE" value="设置多页面（tool的debug方法使用时存在问题，只显示在第一个调用的页面上）" />
+    <MESSAGE value="            //下面注释是坐标变换的尝试，问题有鼠标位置需要改变    尝试设置整个坐标系的变换，可以通过拖动看到超出屏幕的事物（未完成）&#10;优化部分代码，设置时间暂停按钮功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="            //下面注释是坐标变换的尝试，问题有鼠标位置需要改变    尝试设置整个坐标系的变换，可以通过拖动看到超出屏幕的事物（未完成）&#10;优化部分代码，设置时间暂停按钮功能" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CollideModel.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.model.BoxAndTextModel" memberName="mouseAndKeyLister" />

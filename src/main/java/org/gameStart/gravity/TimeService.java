@@ -3,6 +3,8 @@ package org.gameStart.gravity;
 import org.Tool.Tool;
 import org.mainFrame.MainJFrame;
 
+import java.awt.*;
+import java.util.Random;
 import java.util.TreeSet;
 
 public class TimeService {
@@ -24,9 +26,13 @@ public class TimeService {
 
     private MainJFrame mainJFrame;
 
+    //四叉树
+    private QuadNode quadNode;
+
     public TimeService(Integer speedOfTime, MainJFrame mainJFrame) {
         this.speedOfTime = speedOfTime;
         this.mainJFrame = mainJFrame;
+        this.quadNode = new QuadNode(0, 0, MainJFrame.dimension.width);
     }
 
     //添加model
@@ -47,11 +53,13 @@ public class TimeService {
         if (!addTimeSet.isEmpty())
             synchronized (addLock) {
                 timeSet.addAll(addTimeSet);
+                quadNode.addAll(addTimeSet);
                 addTimeSet.clear();
             }
         if (!removeTimeSet.isEmpty())
             synchronized (removeLock) {
                 timeSet.removeAll(removeTimeSet);
+                quadNode.removeAll(removeTimeSet);
                 removeTimeSet.clear();
             }
         for (CollideModel leaf : timeSet) {
@@ -61,11 +69,31 @@ public class TimeService {
         //碰撞检测，每次时间流逝的时候执行一次
         collisionDetection();
 
-        Tool.debug(++time + "",mainJFrame);
+        Tool.debug(++time + "", mainJFrame);
     }
+
+    Random random = new Random();
 
     //碰撞检测
     private void collisionDetection() {
+        try {
+            System.out.println(quadNode.size());
+            timeSet.forEach(e -> quadNode.update(e));
+            quadNode.traverse(arrayList -> {
+                // 使用嵌套循环对ArrayList中的元素两两使用一次
+                for (int i = 0; i < arrayList.size(); i++) {
+                    for (int j = i + 1; j < arrayList.size(); j++) {
+                        //碰撞检测
+                        if (arrayList.get(i).collisionDetection(arrayList.get(j))) {
+                            arrayList.get(i).elasticCollision(arrayList.get(j), 1);
+                        }
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public int getTime() {

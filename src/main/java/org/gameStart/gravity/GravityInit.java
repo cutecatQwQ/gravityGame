@@ -62,22 +62,59 @@ public class GravityInit {
         v.add(0.0);
         Vector<Double> a = new Vector<>(2);
         a.add(0.0);
-        a.add(-0.01);
-        RectangleModel rectangleModel = new RectangleModel(500, 500, 50, 50, Color.black, v, a,false,1);
+        a.add(-0.05);
+        RectangleModel rectangleModel = new RectangleModel(700, 500, 50, 50, Color.black, v, a,false,10);
         v.set(0, -1.0);
         CircleModel circleModel = new CircleModel(1000, 300, 50, Color.black, v, a,false,1);
         mainJFrame.getPaintService().paintSetAdd(rectangleModel);
         mainJFrame.getPaintService().paintSetAdd(circleModel);
         timeService.timeSetAdd(rectangleModel);
-        timeService.timeSetAdd(circleModel);
+        rectangleModel.addLister(new DraggableLister(rectangleModel));
+        mainJFrame.getListenService().mouseSetAdd(rectangleModel);
 
-        RectangleModel[] rectangleModels = new RectangleModel[10];
+//        timeService.timeSetAdd(circleModel);
+
+        v.set(0,0.0);
+        v.set(1,0.0);
+        a.set(0,0.0);
+        a.set(1,0.0);
+        Double infinity = 10000000000000000000000000000000000000000000000000000000000000000000000000000000000.0;
+        RectangleModel wall1 = new RectangleModel(-40, 0, 50, MainJFrame.dimension.height-12, Color.black, v, a,false,infinity);
+        RectangleModel wall2 = new RectangleModel(12, -40,  MainJFrame.dimension.width,50, Color.black, v, a,false,infinity);
+        RectangleModel wall3 = new RectangleModel(MainJFrame.dimension.width-10, 12, 50, MainJFrame.dimension.height-12, Color.black, v, a,false,infinity);
+        RectangleModel wall4 = new RectangleModel(0, MainJFrame.dimension.height-10,  MainJFrame.dimension.width-12,50, Color.black, v, a,false,infinity);
+
+        wall1.addLister(new DraggableLister(wall1));
+        wall2.addLister(new DraggableLister(wall2));
+        wall3.addLister(new DraggableLister(wall3));
+        wall4.addLister(new DraggableLister(wall4));
+
+        timeService.timeSetAdd(wall1);
+        timeService.timeSetAdd(wall2);
+        timeService.timeSetAdd(wall3);
+        timeService.timeSetAdd(wall4);
+
+        mainJFrame.getPaintService().paintSetAdd(wall1);
+        mainJFrame.getPaintService().paintSetAdd(wall2);
+        mainJFrame.getPaintService().paintSetAdd(wall3);
+        mainJFrame.getPaintService().paintSetAdd(wall4);
+
+        mainJFrame.getListenService().mouseSetAdd(wall1);
+        mainJFrame.getListenService().mouseSetAdd(wall2);
+        mainJFrame.getListenService().mouseSetAdd(wall3);
+        mainJFrame.getListenService().mouseSetAdd(wall4);
+
+
+
+
+
+        RectangleModel[] rectangleModels = new RectangleModel[100];
         Random random = new Random();
         for (int i = 0; i < rectangleModels.length; i++) {
-            rectangleModels[i] = new RectangleModel(i%100*10, i/100*10, 10, 10, Color.black, v, a,false,1);
+            rectangleModels[i] = new RectangleModel(50+i%100*10, 700+i/100*10, 10, 10, new Color(random.nextInt(256),random.nextInt(256),random.nextInt(256)), v, a,false,1);
             v.set(0,(2*random.nextDouble()-1));
             v.set(1,(2*random.nextDouble()-1));
-            a.set(1,0.0);
+            a.set(1,-0.1);
 //            a.set(0,(2*random.nextDouble()-1)/100);
 //            a.set(1,(2*random.nextDouble()-1)/100);
             rectangleModels[i].setA(a);
@@ -87,5 +124,22 @@ public class GravityInit {
             timeService.timeSetAdd(rectangleModels[i]);
             mainJFrame.getListenService().mouseSetAdd(rectangleModels[i]);
         }
+
+
+//        RectangleModel[] rectangleModelss = new RectangleModel[1000];
+//        for (int i = 0; i < rectangleModelss.length; i++) {
+//            rectangleModelss[i] = new RectangleModel(500+Math.cos(2.0*Math.PI*i/rectangleModelss.length)*100, 500+Math.sin(2.0*Math.PI*i/rectangleModelss.length)*100, 10, 10, Color.black, v, a,false,1);
+//            v.set(0,(2*random.nextDouble()-1));
+//            v.set(1,(2*random.nextDouble()-1));
+////            a.set(1,0.0);
+//            a.set(0,0.0);
+//            a.set(1,0.0);
+//            rectangleModelss[i].setA(a);
+//            rectangleModelss[i].setV(v);
+//            rectangleModelss[i].addLister(new DraggableLister(rectangleModelss[i]));
+//            mainJFrame.getPaintService().paintSetAdd(rectangleModelss[i]);
+//            timeService.timeSetAdd(rectangleModelss[i]);
+//            mainJFrame.getListenService().mouseSetAdd(rectangleModelss[i]);
+//        }
     }
 }

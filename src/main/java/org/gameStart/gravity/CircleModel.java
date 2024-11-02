@@ -8,7 +8,7 @@ public class CircleModel extends CollideModel {
     private double r;
 
     public CircleModel(double x, double y, double r, Color color, Vector<Double> v, Vector<Double> a,boolean stable,double m) {
-        super(x-r, y-r, r, r, color, v, a,stable,m);
+        super(x-r, y-r, r, r, color, v, a, m);
         setIndex(2.0);
         paint();
     }
@@ -32,5 +32,11 @@ public class CircleModel extends CollideModel {
         this.r = r;
         setH(r);
         setW(r);
+    }
+
+    //碰撞检测
+    @Override
+    public boolean collisionDetection(CollideModel collideModel) {
+        return false;
     }
 }
