@@ -3,7 +3,6 @@ package org.gameStart.gravity;
 import org.Tool.Tool;
 import org.mainFrame.MainJFrame;
 
-import java.awt.*;
 import java.util.Random;
 import java.util.TreeSet;
 
@@ -32,7 +31,7 @@ public class TimeService {
     public TimeService(Integer speedOfTime, MainJFrame mainJFrame) {
         this.speedOfTime = speedOfTime;
         this.mainJFrame = mainJFrame;
-        this.quadNode = new QuadNode(0, 0, MainJFrame.dimension.width);
+        this.quadNode = new QuadNode(0, 0, MainJFrame.dimension.width, mainJFrame);
     }
 
     //添加model
@@ -77,23 +76,40 @@ public class TimeService {
     //碰撞检测
     private void collisionDetection() {
         try {
-            System.out.println(quadNode.size());
+            System.out.println(quadNode.size()+" "+quadNode.count());
             timeSet.forEach(e -> quadNode.update(e));
-            quadNode.traverse(arrayList -> {
+//            quadNode.traverse(hashSet -> {
+//                // 使用嵌套循环对ArrayList中的元素两两使用一次
+//                for (int i = 0; i < hashSet.size(); i++) {
+//                    for (int j = i + 1; j < hashSet.size(); j++) {
+//                        //碰撞检测
+//                        if (hashSet.get(i).collisionDetection(hashSet.get(j))) {
+//                            hashSet.get(i).elasticCollision(hashSet.get(j), 1);
+//                        }
+//                    }
+//                }
+//            });
+            quadNode.traverse(hashSet -> {
                 // 使用嵌套循环对ArrayList中的元素两两使用一次
-                for (int i = 0; i < arrayList.size(); i++) {
-                    for (int j = i + 1; j < arrayList.size(); j++) {
-                        //碰撞检测
-                        if (arrayList.get(i).collisionDetection(arrayList.get(j))) {
-                            arrayList.get(i).elasticCollision(arrayList.get(j), 1);
+                int index = 0;
+                for (CollideModel first : hashSet) {
+                    int secondIndex = 0;
+                    for (CollideModel second : hashSet) {
+                        if (secondIndex >= index) {
+                            // 组合使用两个元素
+                            //碰撞检测
+                            if (first.collisionDetection(second)) {
+                                first.elasticCollision(second, 1);
+                            }
                         }
+                        secondIndex++;
                     }
+                    index++;
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public int getTime() {

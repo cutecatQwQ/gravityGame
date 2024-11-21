@@ -50,7 +50,8 @@ public class MainJFrame extends JFrame {
             g = img.getGraphics();
         }
         //绘制白板
-        g.setColor(Color.WHITE);
+//        g.setColor(Color.WHITE);
+        g.setColor(Color.BLACK);
         g.fillRect(0, 0, (int)(index*dimension.width), (int)(index*dimension.height));
         //绘制主程序
         paintService.paint(g);

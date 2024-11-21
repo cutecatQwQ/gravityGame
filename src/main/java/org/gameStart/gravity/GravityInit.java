@@ -29,7 +29,7 @@ public class GravityInit {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(pa[0]){
-                    p[0] = Tool.afterAndContinue(0, 10, timeService::timePasses);
+                    p[0] = Tool.afterAndContinue(0, 1000, timeService::timePasses);
                 } else {
                     p[0].cancel(false);
                 }
@@ -46,7 +46,7 @@ public class GravityInit {
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_P:
                         if(pa[0]){
-                            p[0] = Tool.afterAndContinue(0, 10, timeService::timePasses);
+                            p[0] = Tool.afterAndContinue(0, 1000, timeService::timePasses);
                         } else {
                             p[0].cancel(false);
                         }
@@ -68,7 +68,7 @@ public class GravityInit {
         CircleModel circleModel = new CircleModel(1000, 300, 50, Color.black, v, a,false,1);
         mainJFrame.getPaintService().paintSetAdd(rectangleModel);
         mainJFrame.getPaintService().paintSetAdd(circleModel);
-        timeService.timeSetAdd(rectangleModel);
+//        timeService.timeSetAdd(rectangleModel);
         rectangleModel.addLister(new DraggableLister(rectangleModel));
         mainJFrame.getListenService().mouseSetAdd(rectangleModel);
 
@@ -108,13 +108,13 @@ public class GravityInit {
 
 
 
-        RectangleModel[] rectangleModels = new RectangleModel[100];
+        RectangleModel[] rectangleModels = new RectangleModel[10];
         Random random = new Random();
         for (int i = 0; i < rectangleModels.length; i++) {
             rectangleModels[i] = new RectangleModel(50+i%100*10, 700+i/100*10, 10, 10, new Color(random.nextInt(256),random.nextInt(256),random.nextInt(256)), v, a,false,1);
             v.set(0,(2*random.nextDouble()-1));
             v.set(1,(2*random.nextDouble()-1));
-            a.set(1,-0.1);
+            a.set(1,0.0);
 //            a.set(0,(2*random.nextDouble()-1)/100);
 //            a.set(1,(2*random.nextDouble()-1)/100);
             rectangleModels[i].setA(a);

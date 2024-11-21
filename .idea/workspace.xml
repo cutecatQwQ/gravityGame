@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="            //下面注释是坐标变换的尝试，问题有鼠标位置需要改变    尝试设置整个坐标系的变换，可以通过拖动看到超出屏幕的事物（未完成）&#10;优化部分代码，设置时间暂停按钮功能">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/QuadNode.java" afterDir="false" />
+    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="添加了碰撞检测代码，实现矩形和矩形的碰撞检测，但是四叉树的大小在不断增加……update代码有bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CircleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CircleModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CollideModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CollideModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/GravityInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/GravityInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/RectangleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/RectangleModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/QuadNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/QuadNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/TimeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/TimeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/MainJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/MainJFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +100,10 @@
       <workItem from="1730288907262" duration="9191000" />
       <workItem from="1730509039031" duration="2090000" />
       <workItem from="1730541966950" duration="5339000" />
-      <workItem from="1730551541784" duration="9882000" />
+      <workItem from="1730551541784" duration="15073000" />
+      <workItem from="1730599483131" duration="5262000" />
+      <workItem from="1730895875612" duration="6000" />
+      <workItem from="1732176704133" duration="303000" />
     </task>
     <task id="LOCAL-00002" summary="设置多页面（tool的debug方法使用时存在问题，只显示在第一个调用的页面上）">
       <option name="closed" value="true" />
@@ -120,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730298053648</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="添加了碰撞检测代码，实现矩形和矩形的碰撞检测，但是四叉树的大小在不断增加……update代码有bug">
+      <option name="closed" value="true" />
+      <created>1730562439381</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730562439381</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,7 +146,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/dev_cutecatQwQ" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -153,11 +162,13 @@
     <MESSAGE value="test merge" />
     <MESSAGE value="设置多页面（tool的debug方法使用时存在问题，只显示在第一个调用的页面上）" />
     <MESSAGE value="            //下面注释是坐标变换的尝试，问题有鼠标位置需要改变    尝试设置整个坐标系的变换，可以通过拖动看到超出屏幕的事物（未完成）&#10;优化部分代码，设置时间暂停按钮功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="            //下面注释是坐标变换的尝试，问题有鼠标位置需要改变    尝试设置整个坐标系的变换，可以通过拖动看到超出屏幕的事物（未完成）&#10;优化部分代码，设置时间暂停按钮功能" />
+    <MESSAGE value="添加了碰撞检测代码，实现矩形和矩形的碰撞检测，但是四叉树的大小在不断增加……update代码有bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加了碰撞检测代码，实现矩形和矩形的碰撞检测，但是四叉树的大小在不断增加……update代码有bug" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="org.gameStart.gravity.QuadNode" memberName="x" />
         <PinnedItemInfo parentTag="org.model.BoxAndTextModel" memberName="mouseAndKeyLister" />
       </pinned-members>
     </pin-to-top-manager>
