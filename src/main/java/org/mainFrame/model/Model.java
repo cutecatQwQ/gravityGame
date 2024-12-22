@@ -47,7 +47,7 @@ public abstract class Model implements Comparable<Model> {
     public void paint() {
     }
 
-    //返回图片画笔，如图片不存在创建一个
+    //返回新的图片的画笔
     public Graphics2D getNewGraphics2D() {
         setImage(new BufferedImage((int) (index * getWDouble()), (int) (index * getHDouble()), BufferedImage.TYPE_INT_ARGB));
         Graphics2D g = ((BufferedImage) getImage()).createGraphics();
@@ -57,6 +57,7 @@ public abstract class Model implements Comparable<Model> {
         return g;
     }
 
+    //返回当前图片画笔，如图片不存在创建一个
     public Graphics2D getGraphics2D() {
         if (getImage() == null) {
             setImage(new BufferedImage((int) (index * getWDouble()), (int) (index * getHDouble()), BufferedImage.TYPE_INT_ARGB));
@@ -164,5 +165,20 @@ public abstract class Model implements Comparable<Model> {
 
     public void setIndex(Double index) {
         this.index = index;
+    }
+
+    @Override
+    public String toString() {
+        return "Model{" +
+                "w=" + w +
+                ", h=" + h +
+                ", x=" + x +
+                ", y=" + y +
+                ", priority=" + priority +
+                ", color=" + color +
+                ", image=" + image +
+                ", mouseAndKeyLister=" + mouseAndKeyLister +
+                ", index=" + index +
+                '}';
     }
 }

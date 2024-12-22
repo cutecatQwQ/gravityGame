@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="            //下面注释是坐标变换的尝试，问题有鼠标位置需要改变    尝试设置整个坐标系的变换，可以通过拖动看到超出屏幕的事物（未完成）&#10;优化部分代码，设置时间暂停按钮功能">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/QuadNode.java" afterDir="false" />
+    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="四叉树的更新函数缺少else 即当前叶子节点发现这个还在自己的控制范围内，应该通知其他的添加，这个通知添加暂时想不到好的算法，遂咕咕">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CircleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CircleModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/GameStart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CollideModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CollideModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/GravityInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/GravityInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/QuadNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/QuadNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/RectangleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/RectangleModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/TimeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/TimeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/Model.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +33,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -103,6 +105,12 @@
       <workItem from="1730509039031" duration="2090000" />
       <workItem from="1730541966950" duration="5339000" />
       <workItem from="1730551541784" duration="9882000" />
+      <workItem from="1732272145414" duration="7000" />
+      <workItem from="1732272160161" duration="8258000" />
+      <workItem from="1732786574872" duration="353000" />
+      <workItem from="1732891159184" duration="1678000" />
+      <workItem from="1732963298876" duration="5000" />
+      <workItem from="1734794592425" duration="2000" />
     </task>
     <task id="LOCAL-00002" summary="设置多页面（tool的debug方法使用时存在问题，只显示在第一个调用的页面上）">
       <option name="closed" value="true" />
@@ -158,6 +166,8 @@
   <component name="XDebuggerManager">
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="org.gameStart.gravity.QuadNode" memberName="x" />
+        <PinnedItemInfo parentTag="org.gameStart.gravity.QuadNode" memberName="quadChild" />
         <PinnedItemInfo parentTag="org.model.BoxAndTextModel" memberName="mouseAndKeyLister" />
       </pinned-members>
     </pin-to-top-manager>

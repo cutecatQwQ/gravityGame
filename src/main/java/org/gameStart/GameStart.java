@@ -48,7 +48,7 @@ public class GameStart {
         @Override
         public void paint() {
             super.paint();
-            Graphics2D g = getNewGraphics2D();
+            Graphics2D g = getGraphics2D();
             //绘制透明色
             g.setComposite(AlphaComposite.getInstance(AlphaComposite.CLEAR, 0));
             g.fillOval(4, 4, 32, 32);
@@ -85,7 +85,7 @@ public class GameStart {
             @Override
             public void paint() {
                 super.paint();
-                Graphics2D g = getNewGraphics2D();
+                Graphics2D g = getGraphics2D();
                 //绘制透明色
                 g.setComposite(AlphaComposite.getInstance(AlphaComposite.CLEAR, 0));
                 g.fillOval(2, 2, 16, 16);

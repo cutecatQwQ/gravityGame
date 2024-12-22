@@ -3,9 +3,9 @@ package org.gameStart.gravity;
 import org.Tool.Tool;
 import org.mainFrame.MainJFrame;
 
-import java.awt.*;
 import java.util.Random;
 import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class TimeService {
     //需要时间的集合
@@ -32,7 +32,7 @@ public class TimeService {
     public TimeService(Integer speedOfTime, MainJFrame mainJFrame) {
         this.speedOfTime = speedOfTime;
         this.mainJFrame = mainJFrame;
-        this.quadNode = new QuadNode(0, 0, MainJFrame.dimension.width);
+        this.quadNode = new QuadNode(0, 0, MainJFrame.dimension.width,mainJFrame);
     }
 
     //添加model
@@ -77,15 +77,22 @@ public class TimeService {
     //碰撞检测
     private void collisionDetection() {
         try {
-            System.out.println(quadNode.size());
+//            System.out.print(quadNode.size()+":");
+//            AtomicInteger a = new AtomicInteger();
+//            quadNode.traverseDFS(quadNode-> a.getAndIncrement());
+//            System.out.print(a+":");
+//            a.set(0);
+//            quadNode.traverseDFS(quadNode-> a.addAndGet(quadNode.tList.size()));
+//            System.out.println(a);
             timeSet.forEach(e -> quadNode.update(e));
-            quadNode.traverse(arrayList -> {
+            quadNode.traverseDFS(quadNode -> {
+//                quadNode.rectangleModel.paint();
                 // 使用嵌套循环对ArrayList中的元素两两使用一次
-                for (int i = 0; i < arrayList.size(); i++) {
-                    for (int j = i + 1; j < arrayList.size(); j++) {
+                for (int i = 0; i < quadNode.tList.size(); i++) {
+                    for (int j = i + 1; j < quadNode.tList.size(); j++) {
                         //碰撞检测
-                        if (arrayList.get(i).collisionDetection(arrayList.get(j))) {
-                            arrayList.get(i).elasticCollision(arrayList.get(j), 1);
+                        if (quadNode.tList.get(i).collisionDetection(quadNode.tList.get(j))) {
+                            quadNode.tList.get(i).elasticCollision(quadNode.tList.get(j), 1);
                         }
                     }
                 }
@@ -93,7 +100,6 @@ public class TimeService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public int getTime() {
