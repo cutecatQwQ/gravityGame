@@ -2,6 +2,7 @@ package org.gameStart;
 
 import org.Tool.Tool;
 import org.gameStart.gravity.GravityInit;
+import org.gameStart.multiDimensional.MultiDimensionalInit;
 import org.gameStart.testOne.Graph;
 import org.gameStart.testOne.Line;
 import org.mainFrame.Service.ListenService;
@@ -25,7 +26,12 @@ public class GameStart {
 //        test1(mainJFrame);
 //        test2(mainJFrame);
 //        test4(mainJFrame);
-        test6(mainJFrame);
+//        test6(mainJFrame);
+        test7(mainJFrame);
+    }
+
+    private void test7(MainJFrame mainJFrame) {
+        MultiDimensionalInit.multiDimensionalInit(mainJFrame);
     }
 
     private void test6(MainJFrame mainJFrame) {

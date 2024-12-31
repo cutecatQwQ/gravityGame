@@ -44,6 +44,7 @@ public abstract class Model implements Comparable<Model> {
         return this.toString().compareTo(o.toString());
     }
 
+    //paint方法为画图方法，里面可以使用getNewGraphics2D或getGraphics2D修改图片 一般情况需要在构造函数里调用一次初始化图片
     public void paint() {
     }
 

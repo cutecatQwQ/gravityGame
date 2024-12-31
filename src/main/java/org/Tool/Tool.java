@@ -4,6 +4,7 @@ import org.gameStart.GameStart;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
@@ -12,10 +13,16 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 import org.mainFrame.MainJFrame;
 import org.mainFrame.Service.ListenService;
 import org.mainFrame.Service.PaintService;
 import org.mainFrame.model.BoxAndTextModel;
+import org.mainFrame.model.ImageModel;
 import org.mainFrame.mouseAndKeyLister.DraggableLister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,6 +89,74 @@ public class Tool {
             mainJFrame.getPaintService().paintSetAdd(debug);
         }
         debug.setText(string);
+    }
+
+    /**
+     * 图表工具类，使用jFreeChart依赖
+     * 新建折线图newLineChart()后向数据集中添加数据addDate(x,y)，
+     * 再结合afterAndContinue()定时更新updateLineChart()
+     * */
+    private static ImageModel lineChartImage = new ImageModel(MainJFrame.dimension.width-500,0,500,500,"");;
+    static {
+        //初始化图片Model
+        lineChartImage.addLister(new DraggableLister(lineChartImage));
+    }
+    private static XYSeries series = new XYSeries("a");
+    private static String x,y,title;
+    //name折线的名字
+    public static void newLineChart(String title,String x,String y,MainJFrame mainJFrame){
+        //数据集
+        Tool.x = x;
+        Tool.y= y;
+        Tool.title = title;
+        series.clear();
+        mainJFrame.getListenService().mouseSetAdd(lineChartImage);
+        mainJFrame.getPaintService().paintSetAdd(lineChartImage);
+        updateLineChart();
+    }
+    //索引为x轴添加数据
+    public static void addDate(double y){
+        //没有新建图表直接返回
+        if(series == null) return;
+        series.add(series.getItemCount(),y);
+    }
+    //添加数据
+    public static void addDate(double x,double y){
+        //没有新建图表直接返回
+        if(series == null) return;
+        series.add(x,y);
+    }
+    //更新折线图
+    public static void updateLineChart(){
+        //没有新建图表直接返回
+        if(series == null) return;
+
+        XYSeriesCollection dataset = new XYSeriesCollection();
+        dataset.addSeries(series);
+
+        JFreeChart chart = ChartFactory.createXYLineChart(
+                title, // 图表标题
+                Tool.x, // x轴标签
+                Tool.y, // y轴标签
+                dataset, // 数据集
+                PlotOrientation.VERTICAL, // 绘图方向
+                true,                 // 是否显示图例
+                true,                 // 是否生成工具提示
+                false                 // 是否生成URL链接
+        );
+
+        int width = 500;
+        int height = 500;
+        // 创建图表并转换为BufferedImage
+        BufferedImage image = chart.createBufferedImage(width, height);
+
+        if (image != null) {
+//            System.out.println("图表已成功转换为BufferedImage！");
+            // 这里可以进一步处理或显示这个BufferedImage
+            lineChartImage.setImage(image);
+        } else {
+            log.error("转换失败！");
+        }
     }
 
     //delay毫秒后执行方法,使用ScheduledFuture的cancel()方法并传递true即可打断
