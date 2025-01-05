@@ -2,15 +2,12 @@ package org.gameStart;
 
 import org.Tool.Tool;
 import org.gameStart.gravity.GravityInit;
-import org.gameStart.multiDimensional.MultiDimensionalInit;
+import org.gameStart.multiDimensional.MultiDimensionalInit3D;
 import org.gameStart.testOne.Graph;
 import org.gameStart.testOne.Line;
-import org.mainFrame.Service.ListenService;
 import org.mainFrame.MainJFrame;
-import org.mainFrame.Service.PaintService;
 import org.mainFrame.model.BoxAndTextModel;
 import org.mainFrame.model.ImageModel;
-import org.mainFrame.model.Model;
 import org.mainFrame.mouseAndKeyLister.*;
 import org.gameStart.testOne.Point;
 
@@ -28,10 +25,41 @@ public class GameStart {
 //        test4(mainJFrame);
 //        test6(mainJFrame);
         test7(mainJFrame);
+//        test8(mainJFrame);
+    }
+
+    private void test8(MainJFrame mainJFrame) {
+        Graph graph = new Graph();
+        Point startX = new Point(0, MainJFrame.dimension.height / 2.0, 1, Color.red, 0);
+        Point endX = new Point(MainJFrame.dimension.width, MainJFrame.dimension.height / 2.0, 1, Color.red, 0);
+        graph.addLine(startX, endX, mainJFrame);
+        Point startY = new Point(MainJFrame.dimension.width / 2.0, 0, 1, Color.red, 0);
+        Point endY = new Point(MainJFrame.dimension.width / 2.0, MainJFrame.dimension.height, 1, Color.red, 0);
+        graph.addLine(startY, endY, mainJFrame);
+        //y = e^x
+        int length = MainJFrame.dimension.width;
+        Point[] points = new Point[length];
+        double[] x = new double[length];
+        double[] y = new double[length];
+        for (int i = 0; i < length; i++) {
+            x[i] = i - MainJFrame.dimension.width / 2.0;
+            y[i] = Math.tan(0.01*x[i]);
+        }
+        for (int i = 0; i < length; i++) {
+            points[i] = new Point(x[i] + MainJFrame.dimension.width / 2.0, MainJFrame.dimension.height / 2.0 - y[i], 1, Color.red, 0);
+            if (i != 0) {
+                if (y[i] > MainJFrame.dimension.height / 2.0 || y[i] < -MainJFrame.dimension.height / 2.0)
+                    continue;
+                graph.addLine(points[i], points[i - 1], mainJFrame);
+                System.out.println(i);
+            }
+        }
+        System.out.println("終わる");
+
     }
 
     private void test7(MainJFrame mainJFrame) {
-        MultiDimensionalInit.multiDimensionalInit(mainJFrame);
+        MultiDimensionalInit3D.multiDimensionalInit(mainJFrame);
     }
 
     private void test6(MainJFrame mainJFrame) {
@@ -68,13 +96,13 @@ public class GameStart {
         for (int i = 0; i < points.length; i++) {
 //            points[i] = new Point(10, 10, 5,Color.red,0);
             points[i] = new Point(random.nextInt(1500) + 10, random.nextInt(800) + 10, 10, Color.red, 0);
-            graph.addPoint(points[i],mainJFrame);
+            graph.addPoint(points[i], mainJFrame);
         }
 
         for (int i = 0; i < points.length; i++) {
             for (int j = 0; j < points.length; j++) {
                 if (random.nextBoolean() && random.nextBoolean() && random.nextBoolean() && random.nextBoolean())
-                    graph.addLine(points[i], points[j],mainJFrame);
+                    graph.addLine(points[i], points[j], mainJFrame);
             }
         }
 //        for (int i = 0; i < points.length; i++) {
@@ -101,7 +129,7 @@ public class GameStart {
 
         Point point = new Point(1200, 200, 5, Color.black, -1);
         Line line = new Line(point1, point, Color.black, 0);
-        line.addLister(new ButtonLister(line,mainJFrame));
+        line.addLister(new ButtonLister(line, mainJFrame));
         point.addLister(new DraggableLister(point));
         point.addLister(new MouseAndKeyLister() {
             @Override
@@ -167,13 +195,13 @@ public class GameStart {
         mainJFrame.getListenService().keySetAdd(Gao);
 
         BoxAndTextModel boxAndTextModel = new BoxAndTextModel(0, 0, 200, 50, new Color(0, 0, 0, 0), Color.blue, 0.66, "点击开始");
-        boxAndTextModel.addLister(new ButtonLister(boxAndTextModel,mainJFrame));
+        boxAndTextModel.addLister(new ButtonLister(boxAndTextModel, mainJFrame));
         mainJFrame.getPaintService().paintSetAdd(boxAndTextModel);
         mainJFrame.getListenService().mouseSetAdd(boxAndTextModel);
 
 //        Tool.after(3000, "", "addLister", "");
 
-        BoxAndTextModel boxAndTextModel1 = new BoxAndTextModel(0, 50, 1960 * 4 / 50.0, 1080 * 4 / 50.0, new Color(225,225,225), Color.BLACK, 0.33, "原神");
+        BoxAndTextModel boxAndTextModel1 = new BoxAndTextModel(0, 50, 1960 * 4 / 50.0, 1080 * 4 / 50.0, new Color(225, 225, 225), Color.BLACK, 0.33, "原神");
         boxAndTextModel1.addLister(new WheelLister(boxAndTextModel1));
         mainJFrame.getPaintService().paintSetAdd(boxAndTextModel1);
         mainJFrame.getListenService().mouseSetAdd(boxAndTextModel1);

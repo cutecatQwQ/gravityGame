@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.function.Consumer;
 
 //凸四边形
-public class Face extends Model implements Object {
+public class Face extends Object {
     Point[] points;
     Line[] lines;
 
@@ -31,6 +31,10 @@ public class Face extends Model implements Object {
             yPoint[i] = (int) (points[i].getYDouble()-getYDouble());
         }
         graphics2D.fillPolygon(xPoint, yPoint, points.length);
+    }
+
+    public Point[] getPoints() {
+        return points;
     }
 
     public Point get(int i) {

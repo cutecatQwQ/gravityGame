@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.function.DoubleUnaryOperator;
 
-public class Point extends Model implements Object{
+public class Point extends Object{
     //实际坐标
     private double[] coordinates;
     //投影坐标就是Model的XY坐标

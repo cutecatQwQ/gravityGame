@@ -4,23 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="还是没找到什么好算法，和上一版比基本没什么区别。突然有灵感要写一个四维的，遂咕咕这个">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Camera.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/CameraController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Face.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Line.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Matrix.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/MatrixUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/MultiDimensionalInit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Object.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Point.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Vector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="写好了四维的一个界面，但是目前很难去辨别和理解，网上找了个哔哩哔哩的视频，先从四维降到3维后再直接采用3维的技术，觉得很好，于是尝试复现，所以备份">
+      <change afterPath="$PROJECT_DIR$/Description of requirements.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Camera3D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Camera3DController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/MultiDimensionalInit3D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Rendering3DService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Window.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Tool/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Tool/Tool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/GameStart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Face.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Face.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Line.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Line.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Point.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +66,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.gameStart.multiDimensional" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.App" />
@@ -145,6 +148,12 @@
       <workItem from="1735431473556" duration="2804000" />
       <workItem from="1735455831265" duration="2283000" />
       <workItem from="1735633879743" duration="2000" />
+      <workItem from="1735662827471" duration="13834000" />
+      <workItem from="1735704130515" duration="5020000" />
+      <workItem from="1735875809708" duration="4199000" />
+      <workItem from="1735913323679" duration="269000" />
+      <workItem from="1736011687642" duration="2992000" />
+      <workItem from="1736040050839" duration="484000" />
     </task>
     <task id="LOCAL-00002" summary="设置多页面（tool的debug方法使用时存在问题，只显示在第一个调用的页面上）">
       <option name="closed" value="true" />
@@ -170,7 +179,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734846562164</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="写好了四维的一个界面，但是目前很难去辨别和理解，网上找了个哔哩哔哩的视频，先从四维降到3维后再直接采用3维的技术，觉得很好，于是尝试复现，所以备份">
+      <option name="closed" value="true" />
+      <created>1735662966898</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1735662966898</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,7 +204,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/dev_cutecatQwQ" />
+                        <option value="origin/dev_cutecatQwQ1" />
                       </list>
                     </value>
                   </entry>
@@ -204,7 +221,8 @@
     <MESSAGE value="设置多页面（tool的debug方法使用时存在问题，只显示在第一个调用的页面上）" />
     <MESSAGE value="            //下面注释是坐标变换的尝试，问题有鼠标位置需要改变    尝试设置整个坐标系的变换，可以通过拖动看到超出屏幕的事物（未完成）&#10;优化部分代码，设置时间暂停按钮功能" />
     <MESSAGE value="还是没找到什么好算法，和上一版比基本没什么区别。突然有灵感要写一个四维的，遂咕咕这个" />
-    <option name="LAST_COMMIT_MESSAGE" value="还是没找到什么好算法，和上一版比基本没什么区别。突然有灵感要写一个四维的，遂咕咕这个" />
+    <MESSAGE value="写好了四维的一个界面，但是目前很难去辨别和理解，网上找了个哔哩哔哩的视频，先从四维降到3维后再直接采用3维的技术，觉得很好，于是尝试复现，所以备份" />
+    <option name="LAST_COMMIT_MESSAGE" value="写好了四维的一个界面，但是目前很难去辨别和理解，网上找了个哔哩哔哩的视频，先从四维降到3维后再直接采用3维的技术，觉得很好，于是尝试复现，所以备份" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -214,6 +232,15 @@
           <line>219</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/MultiDimensionalInit3D.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.OutOfMemoryError" package="java.lang" />
+          <option name="timeStamp" value="5" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

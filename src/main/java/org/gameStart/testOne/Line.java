@@ -28,10 +28,10 @@ public class Line extends Model {
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.setColor(color);
         g.drawLine(
-                point1.getX()-getX()+point1.r,
-                point1.getY()-getY()+point1.r,
-                point2.getX()-getX()+point2.r,
-                point2.getY()-getY()+point2.r
-                );
+                (int) (point1.getX()-getX()+point1.r),
+                (int) (point1.getY()-getY()+point1.r),
+                (int) (point2.getX()-getX()+point2.r),
+                (int) (point2.getY()-getY()+point2.r)
+        );
     }
 }

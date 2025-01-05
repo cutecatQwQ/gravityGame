@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
-public class Line extends Model implements Object {
+public class Line extends Object {
     Point[] points;
 
     public Line(Point... points) {

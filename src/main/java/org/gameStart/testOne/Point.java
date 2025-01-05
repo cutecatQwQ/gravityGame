@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class Point extends Model {
     Color color;
     ArrayList<Line> lines = new ArrayList<>();
-    int r;
-    public Point(int x, int y, int r ,Color color,int priority) {
+    double r;
+    public Point(double x, double y, double r ,Color color,int priority) {
         this.setX(x - r / 2);
         this.setY(y - r / 2);
         this.setW(r * 2);
