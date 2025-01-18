@@ -1,8 +1,37 @@
-package org.gameStart.multiDimensional;
+package org.Tool;
 
-import java.util.Arrays;
+import org.gameStart.multiDimensional.Matrix;
+import org.gameStart.multiDimensional.objects.Point;
+import org.gameStart.multiDimensional.objects.Vector;
 
-public final class MatrixUtil {
+public final class MathUtil {
+    // 组合数最大 n 值
+    private static final int MAX_N = 10;
+    // 声明一个二维数组来存储组合数
+    private static final long[][] dp = new long[MAX_N + 1][MAX_N + 1];
+    // 使用动态规划预计算组合数
+    static {
+        // 初始化组合数数组
+        for (int n = 0; n <= MAX_N; n++) {
+            dp[n][0] = 1; // C(n, 0) = 1
+            dp[n][n] = 1; // C(n, n) = 1
+        }
+
+        // 填充组合数数组
+        for (int n = 1; n <= MAX_N; n++) {
+            for (int k = 1; k < n; k++) {
+                dp[n][k] = dp[n - 1][k - 1] + dp[n - 1][k];
+            }
+        }
+    }
+    // 获取组合数 C(n, k)
+    public static long C(int n, int k) {
+        if (n < 0 || n > MAX_N || k < 0 || k > n) {
+            throw new IllegalArgumentException("Invalid values for n or k.");
+        }
+        return dp[n][k];
+    }
+
     //正规化 化为单位向量
     public static void normalization(Vector vector) {
         double sum = 0;
@@ -48,7 +77,7 @@ public final class MatrixUtil {
         Matrix identity = new Matrix(matrix.getRow(), matrix.getColumn());
         //填充单位矩阵
         for (int i = 0; i < matrix.getRow(); i++) {
-            identity.set(i,i,1);
+            identity.set(i, i, 1);
         }
         Matrix[] augmented = new Matrix[2];
         augmented[0] = matrix;
@@ -72,8 +101,8 @@ public final class MatrixUtil {
                 }
             }
             // 交换行
-            swapRows(a,i, maxRow);
-            swapRows(b,i, maxRow);
+            swapRows(a, i, maxRow);
+            swapRows(b, i, maxRow);
 
             // 归一化主元行
             double divisor = a.get(i, i);
@@ -101,11 +130,11 @@ public final class MatrixUtil {
     }
 
     //交换行
-    public static void swapRows(Matrix matrix,int i,int j){
+    public static void swapRows(Matrix matrix, int i, int j) {
         for (int k = 0; k < matrix.getColumn(); k++) {
-            double temp = matrix.get(i,k);
-            matrix.set(i,k,matrix.get(j,k));
-            matrix.set(j,k,temp);
+            double temp = matrix.get(i, k);
+            matrix.set(i, k, matrix.get(j, k));
+            matrix.set(j, k, temp);
         }
     }
 

@@ -1,5 +1,7 @@
 package org.gameStart.multiDimensional;
 
+import org.Tool.MathUtil;
+import org.gameStart.multiDimensional.objects.Point;
 import org.mainFrame.MainJFrame;
 import org.mainFrame.model.Model;
 
@@ -17,7 +19,7 @@ public class Camera3D extends Model {
         this.location = location;
         this.baseCoordinates = baseCoordinates;
         //对基坐标的每一个向量规格化
-        baseCoordinates.traverse(MatrixUtil::normalization);
+        baseCoordinates.traverse(MathUtil::normalization);
     }
 
     //获取基向量矩阵
@@ -65,13 +67,13 @@ public class Camera3D extends Model {
             matrixHashMap[i][j].put(a,matrix);
         }
 //        System.out.println(matrix);
-        baseCoordinates = MatrixUtil.matrixMultiplication(matrix, baseCoordinates);
+        baseCoordinates = MathUtil.matrixMultiplication(matrix, baseCoordinates);
     }
     public void init(Point point) {
         //平移后的点
-        Point point1 = MatrixUtil.translate(point, location);
+        Point point1 = MathUtil.translate(point, location);
         //旋转后的点
-        point1 = MatrixUtil.revolve(point1, baseCoordinates);
+        point1 = MathUtil.revolve(point1, baseCoordinates);
         //投影矩阵
 
         point.setX(point1.get(1) + (double) MainJFrame.dimension.width / 2);

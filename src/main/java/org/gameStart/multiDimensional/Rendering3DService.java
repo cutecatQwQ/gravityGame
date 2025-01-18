@@ -1,5 +1,6 @@
 package org.gameStart.multiDimensional;
 
+import org.gameStart.multiDimensional.objects.Object;
 import org.mainFrame.MainJFrame;
 import org.mainFrame.model.Model;
 
@@ -55,7 +56,7 @@ public class Rendering3DService {
             }
 
         //对每个点进行初始化
-        rendering3DSet.forEach(rendering3D-> rendering3D.traverse(camera3D::init));
+//        rendering3DSet.forEach(rendering3D-> rendering3D.traverse(camera3D::init));
 
     }
 }

@@ -1,5 +1,7 @@
 package org.gameStart.multiDimensional;
 
+import org.Tool.MathUtil;
+import org.gameStart.multiDimensional.objects.Point;
 import org.mainFrame.model.Model;
 
 import java.util.HashMap;
@@ -14,7 +16,7 @@ public class Camera extends Model {
         this.location = location;
         this.baseCoordinates = baseCoordinates;
         //对基坐标的每一个向量规格化
-        baseCoordinates.traverse(MatrixUtil::normalization);
+        baseCoordinates.traverse(MathUtil::normalization);
     }
 
     //获取基向量矩阵
@@ -61,6 +63,6 @@ public class Camera extends Model {
             matrixHashMap[i][j].put(a,matrix);
         }
 //        System.out.println(matrix);
-        baseCoordinates = MatrixUtil.matrixMultiplication(matrix, baseCoordinates);
+        baseCoordinates = MathUtil.matrixMultiplication(matrix, baseCoordinates);
     }
 }

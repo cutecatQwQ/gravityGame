@@ -1,17 +1,41 @@
-package org.gameStart.multiDimensional;
+package org.gameStart.multiDimensional.objects;
 
-import org.mainFrame.model.Model;
+import org.gameStart.multiDimensional.objects.Object;
+import org.gameStart.multiDimensional.objects.Point;
 
 import java.awt.*;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
-public class Line extends Object {
+public class Line extends LinearGeometry {
     Point[] points;
 
     public Line(Point... points) {
+        super(points[0].getDimension());
         this.points = points;
         setColor(Color.BLACK);
+    }
+
+    public Point get(int i) {
+        return points[i];
+    }
+
+    public void set(int i, Point point) {
+        points[i] = point;
+    }
+
+    public void traverse(Consumer<Point> consumer) {
+        //初始化每个点
+        for (Point point : points) {
+            consumer.accept(point);
+        }
+        setX(Math.min(points[0].getXDouble(), points[1].getXDouble())-add);
+        setY(Math.min(points[0].getYDouble(), points[1].getYDouble())-add);
+        setW(Math.max(points[0].getXDouble(), points[1].getXDouble()) - getXDouble()+add*2);
+        setH(Math.max(points[0].getYDouble(), points[1].getYDouble()) - getYDouble()+add*2);
+        if (getW() < 1) setW(1);
+        if (getH() < 1) setH(1);
+        paint();
     }
 
     @Override
@@ -35,29 +59,6 @@ public class Line extends Object {
             yPoint[i] = (int) (points[i].getYDouble()-getYDouble());
         }
         graphics2D.drawLine(xPoint[0],yPoint[0],xPoint[1],yPoint[1]);
-    }
-
-    public Point get(int i) {
-        return points[i];
-    }
-
-    public void set(int i, Point point) {
-        points[i] = point;
-    }
-
-    @Override
-    public void traverse(Consumer<Point> consumer) {
-        //初始化每个点
-        for (Point point : points) {
-            consumer.accept(point);
-        }
-        setX(Math.min(points[0].getXDouble(), points[1].getXDouble())-add);
-        setY(Math.min(points[0].getYDouble(), points[1].getYDouble())-add);
-        setW(Math.max(points[0].getXDouble(), points[1].getXDouble()) - getXDouble()+add*2);
-        setH(Math.max(points[0].getYDouble(), points[1].getYDouble()) - getYDouble()+add*2);
-        if (getW() < 1) setW(1);
-        if (getH() < 1) setH(1);
-        paint();
     }
 
     @Override

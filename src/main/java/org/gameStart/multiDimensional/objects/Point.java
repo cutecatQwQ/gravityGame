@@ -1,26 +1,27 @@
-package org.gameStart.multiDimensional;
+package org.gameStart.multiDimensional.objects;
 
-import org.mainFrame.model.Model;
+import org.gameStart.multiDimensional.Camera;
 
 import java.awt.*;
-import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.function.DoubleUnaryOperator;
 
-public class Point extends Object{
+public class Point extends LinearGeometry {
     //实际坐标
     private double[] coordinates;
     //投影坐标就是Model的XY坐标
 
     public Point(double... coordinates) {
+        super(coordinates.length);
         this.coordinates = coordinates;
         setW(1);
         setH(1);
         paint();
     }
 
-    public Point(int n) {
-        this.coordinates = new double[n];
+    public Point(int dimension) {
+        super(dimension);
+        this.coordinates = new double[dimension];
         setW(1);
         setH(1);
         paint();
@@ -59,6 +60,7 @@ public class Point extends Object{
         return coordinates;
     }
 
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -73,8 +75,10 @@ public class Point extends Object{
         return sb.toString();
     }
 
-    @Override
-    public void traverse(Consumer<Point> consumer) {
-        consumer.accept(this);
+    //每个坐标进行遍历
+    public void traverseCoordinates(Consumer<Double> consumer) {
+        for (double coordinate : coordinates) {
+            consumer.accept(coordinate);
+        }
     }
 }

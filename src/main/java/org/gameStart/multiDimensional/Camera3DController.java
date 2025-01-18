@@ -1,10 +1,9 @@
 package org.gameStart.multiDimensional;
 
-import org.Tool.Tool;
+import org.gameStart.multiDimensional.objects.Vector;
 import org.mainFrame.MainJFrame;
 import org.mainFrame.mouseAndKeyLister.MouseAndKeyLister;
 
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 

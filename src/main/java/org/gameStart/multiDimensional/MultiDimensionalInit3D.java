@@ -1,5 +1,8 @@
 package org.gameStart.multiDimensional;
 
+import org.gameStart.multiDimensional.objects.Line;
+import org.gameStart.multiDimensional.objects.Point;
+import org.gameStart.multiDimensional.objects.Vector;
 import org.mainFrame.MainJFrame;
 import org.mainFrame.model.ImageModel;
 
@@ -20,7 +23,7 @@ public class MultiDimensionalInit3D {
         imageModel.setImage(image);
         mainJFrame.getPaintService().paintSetAdd(imageModel);
 
-        Camera3D camera3D = new Camera3D(new Point(0, 0, 0),
+        Camera3D camera3D = new Camera3D(new org.gameStart.multiDimensional.objects.Point(0, 0, 0),
                 new Matrix(new Vector(1, 0, 0),
                         new Vector(0, 1, 0),
                         new Vector(0, 0, 1)));
@@ -30,29 +33,29 @@ public class MultiDimensionalInit3D {
         mainJFrame.getListenService().mouseSetAdd(camera3D);
 
         //坐标轴
-        Line line0 = new Line(new Point(0, 0, 0), new Point(300, 0, 0));
+        Line line0 = new Line(new org.gameStart.multiDimensional.objects.Point(0, 0, 0), new org.gameStart.multiDimensional.objects.Point(300, 0, 0));
         line0.setColor(Color.red);
-        Line line1 = new Line(new Point(0, 0, 0), new Point(0, 300, 0));
+        Line line1 = new Line(new org.gameStart.multiDimensional.objects.Point(0, 0, 0), new org.gameStart.multiDimensional.objects.Point(0, 300, 0));
         line1.setColor(Color.BLUE);
-        Line line2 = new Line(new Point(0, 0, 0), new Point(0, 0, 300));
+        Line line2 = new Line(new org.gameStart.multiDimensional.objects.Point(0, 0, 0), new org.gameStart.multiDimensional.objects.Point(0, 0, 300));
         line2.setColor(Color.GREEN);
 
         for (int i = -100; i <= 100; i += 20) {
-            Line line = new Line(new Point(i, -120, 0), new Point(i, 120, 0));
+            Line line = new Line(new org.gameStart.multiDimensional.objects.Point(i, -120, 0), new org.gameStart.multiDimensional.objects.Point(i, 120, 0));
             line.setColor(new Color(0, 0, 0, 63));
             rendering3DService.rendering3DSetAdd(line);
         }
         for (int i = -100; i <= 100; i += 20) {
-            Line line = new Line(new Point(-120, i, 0), new Point(120, i, 0));
+            Line line = new Line(new org.gameStart.multiDimensional.objects.Point(-120, i, 0), new org.gameStart.multiDimensional.objects.Point(120, i, 0));
             line.setColor(new Color(0, 0, 0, 63));
             rendering3DService.rendering3DSetAdd(line);
         }
 
-        Point[] points = new Point[8];
+        org.gameStart.multiDimensional.objects.Point[] points = new org.gameStart.multiDimensional.objects.Point[8];
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
                 for (int k = 0; k < 2; k++) {
-                    points[i + j * 2 + k * 4] = new Point(i * 20, j * 20, k * 20);
+                    points[i + j * 2 + k * 4] = new org.gameStart.multiDimensional.objects.Point(i * 20, j * 20, k * 20);
                 }
             }
         }
@@ -73,27 +76,27 @@ public class MultiDimensionalInit3D {
         Face[] faces = new Face[6];
         try{int out = 0;
         faces[0] = new Face(points[0], points[1], points[3], points[2]);
-        for (Point point : faces[0].getPoints()) {
+        for (org.gameStart.multiDimensional.objects.Point point : faces[0].getPoints()) {
             point.add(2, -out);
         }
         faces[0].setColor(new Color(255, 255, 255));
         faces[1] = new Face(points[0], points[1], points[5], points[4]);
-        for (Point point : faces[1].getPoints()) {
+        for (org.gameStart.multiDimensional.objects.Point point : faces[1].getPoints()) {
             point.add(1, -out);
         }
         faces[1].setColor(new Color(255, 0, 0));
         faces[2] = new Face(points[0], points[2], points[6], points[4]);
-        for (Point point : faces[2].getPoints()) {
+        for (org.gameStart.multiDimensional.objects.Point point : faces[2].getPoints()) {
             point.add(0, -out);
         }
         faces[2].setColor(new Color(0, 0, 255));
         faces[3] = new Face(points[1], points[3], points[7], points[5]);
-        for (Point point : faces[3].getPoints()) {
+        for (org.gameStart.multiDimensional.objects.Point point : faces[3].getPoints()) {
             point.add(0, out);
         }
         faces[3].setColor(new Color(0, 255, 0));
         faces[4] = new Face(points[2], points[3], points[7], points[6]);
-        for (Point point : faces[4].getPoints()) {
+        for (org.gameStart.multiDimensional.objects.Point point : faces[4].getPoints()) {
             point.add(1, out);
         }
         faces[4].setColor(new Color(250, 128, 10));

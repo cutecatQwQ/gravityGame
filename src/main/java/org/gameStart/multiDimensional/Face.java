@@ -1,6 +1,8 @@
 package org.gameStart.multiDimensional;
 
-import org.mainFrame.model.Model;
+import org.gameStart.multiDimensional.objects.Line;
+import org.gameStart.multiDimensional.objects.Object;
+import org.gameStart.multiDimensional.objects.Point;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -8,10 +10,11 @@ import java.util.function.Consumer;
 
 //凸四边形
 public class Face extends Object {
-    Point[] points;
+    org.gameStart.multiDimensional.objects.Point[] points;
     Line[] lines;
 
     public Face(Point... points) {
+        super(0);
         this.points = points;
         lines = new Line[points.length];
         for (int i = 0; i < points.length; i++) {
@@ -33,20 +36,20 @@ public class Face extends Object {
         graphics2D.fillPolygon(xPoint, yPoint, points.length);
     }
 
-    public Point[] getPoints() {
+    public org.gameStart.multiDimensional.objects.Point[] getPoints() {
         return points;
     }
 
-    public Point get(int i) {
+    public org.gameStart.multiDimensional.objects.Point get(int i) {
         return points[i];
     }
 
-    public void set(int i, Point point) {
+    public void set(int i, org.gameStart.multiDimensional.objects.Point point) {
         points[i] = point;
     }
 
-    @Override
-    public void traverse(Consumer<Point> consumer) {
+//    @Override
+    public void traverse(Consumer<org.gameStart.multiDimensional.objects.Point> consumer) {
         //初始化每个边，让边去初始化点
 //        for (Line line : lines) {
 //            line.traverse(consumer);

@@ -1,5 +1,7 @@
 package org.gameStart.multiDimensional;
 
+import org.gameStart.multiDimensional.objects.Vector;
+
 import java.util.Arrays;
 import java.util.function.Consumer;
 

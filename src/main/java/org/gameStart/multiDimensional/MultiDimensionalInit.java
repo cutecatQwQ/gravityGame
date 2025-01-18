@@ -1,24 +1,18 @@
 package org.gameStart.multiDimensional;
 
-import org.Tool.Tool;
-import org.jfree.chart.plot.PlotOrientation;
+import org.Tool.MathUtil;
+import org.gameStart.multiDimensional.objects.Line;
+import org.gameStart.multiDimensional.objects.Object;
+import org.gameStart.multiDimensional.objects.Point;
+import org.gameStart.multiDimensional.objects.Vector;
 import org.mainFrame.MainJFrame;
 import org.mainFrame.model.BoxAndTextModel;
-import org.mainFrame.model.ImageModel;
 import org.mainFrame.model.Model;
-import org.mainFrame.mouseAndKeyLister.DraggableLister;
 import org.mainFrame.mouseAndKeyLister.MouseAndKeyLister;
-
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 import java.util.*;
-import java.util.List;
 
 public class MultiDimensionalInit {
     public static int N = 4;
@@ -51,10 +45,10 @@ public class MultiDimensionalInit {
         System.out.println("start！");
 
 
-        Camera camera = new Camera(new Point(0, 0, 0, 0),
-                new Matrix(new Vector(1, 0, 0, 0),
-                        new Vector(0, -1, 0, 0),
-                        new Vector(0, 0, 1, 0),
+        Camera camera = new Camera(new org.gameStart.multiDimensional.objects.Point(0, 0, 0, 0),
+                new Matrix(new org.gameStart.multiDimensional.objects.Vector(1, 0, 0, 0),
+                        new org.gameStart.multiDimensional.objects.Vector(0, -1, 0, 0),
+                        new org.gameStart.multiDimensional.objects.Vector(0, 0, 1, 0),
                         new Vector(0, 0, 0, 1)));
 
 
@@ -148,13 +142,13 @@ public class MultiDimensionalInit {
         mainJFrame.getListenService().keySetAdd(camera);
 
         //坐标轴
-        Line line0 = new Line(new Point(0, 0, 0, 0), new Point(300, 0, 0, 0));
+        Line line0 = new Line(new org.gameStart.multiDimensional.objects.Point(0, 0, 0, 0), new org.gameStart.multiDimensional.objects.Point(300, 0, 0, 0));
         line0.setColor(Color.red);
-        Line line1 = new Line(new Point(0, 0, 0, 0), new Point(0, 300, 0, 0));
+        Line line1 = new Line(new org.gameStart.multiDimensional.objects.Point(0, 0, 0, 0), new org.gameStart.multiDimensional.objects.Point(0, 300, 0, 0));
         line1.setColor(Color.BLUE);
-        Line line2 = new Line(new Point(0, 0, 0, 0), new Point(0, 0, 300, 0));
+        Line line2 = new Line(new org.gameStart.multiDimensional.objects.Point(0, 0, 0, 0), new org.gameStart.multiDimensional.objects.Point(0, 0, 300, 0));
         line2.setColor(Color.GREEN);
-        Line line3 = new Line(new Point(0, 0, 0, 0), new Point(0, 0, 0, 300));
+        Line line3 = new Line(new org.gameStart.multiDimensional.objects.Point(0, 0, 0, 0), new org.gameStart.multiDimensional.objects.Point(0, 0, 0, 300));
         line3.setColor(Color.BLACK);
 
         objectSet.add(line0);
@@ -164,7 +158,7 @@ public class MultiDimensionalInit {
 
 
         // Generate all vertices of the hypercube
-        Point[] vertices = generateVertices();
+        org.gameStart.multiDimensional.objects.Point[] vertices = generateVertices();
 
         // Get all edges (lines) of the hypercube
         ArrayList<Line> edges = getAllEdges(vertices);
@@ -239,7 +233,7 @@ public class MultiDimensionalInit {
     //摄像头移动了，苏姚对所有点重新初始化
     public synchronized static void change(Camera camera) {
         try {
-            objectSet.forEach(e -> e.traverse(point -> init(camera, point)));
+//            objectSet.forEach(e -> e.traverse(point -> init(camera, point)));
             boxAndTextModels[0].setText("坐标" + camera.location);
             boxAndTextModels[1].setText("基坐标x" + camera.baseCoordinates.get(0));
             boxAndTextModels[2].setText("基坐标y" + camera.baseCoordinates.get(1));
@@ -252,15 +246,15 @@ public class MultiDimensionalInit {
     }
 
     //初始化
-    public static void init(Camera camera, Point point) {
+    public static void init(Camera camera, org.gameStart.multiDimensional.objects.Point point) {
         //平移后的点
-        Point point1 = MatrixUtil.translate(point, camera.location);
+        org.gameStart.multiDimensional.objects.Point point1 = MathUtil.translate(point, camera.location);
         //旋转后的点
-        point1 = MatrixUtil.revolve(point1, camera.baseCoordinates);
+        point1 = MathUtil.revolve(point1, camera.baseCoordinates);
         //投影矩阵
-//        Matrix matrix = MatrixUtil.projection(camera.getProjectionBaseCoordinates());
+//        Matrix matrix = MathUtil.projection(camera.getProjectionBaseCoordinates());
 //        投影后的点
-//        point1 = MatrixUtil.matrixVectorMultiplication(matrix,new Vector(point1));
+//        point1 = MathUtil.matrixVectorMultiplication(matrix,new Vector(point1));
         point.setX(point1.get(1) + (double) MainJFrame.dimension.width / 2);
         point.setY((double) MainJFrame.dimension.height / 2 - point1.get(2));
 //        System.out.println(point+"->"+point1);
@@ -270,20 +264,20 @@ public class MultiDimensionalInit {
     private static final int DIMENSIONS = 4;
     private static final int VERTICES_COUNT = (int) Math.pow(2, DIMENSIONS);
 
-    private static Point[] generateVertices() {
-        Point[] vertices = new Point[VERTICES_COUNT];
+    private static org.gameStart.multiDimensional.objects.Point[] generateVertices() {
+        org.gameStart.multiDimensional.objects.Point[] vertices = new org.gameStart.multiDimensional.objects.Point[VERTICES_COUNT];
         int index = 0;
         for (int i = 0; i < VERTICES_COUNT; i++) {
             double[] coordinates = new double[DIMENSIONS];
             for (int j = 0; j < DIMENSIONS; j++) {
                 coordinates[j] = (i & (1 << j)) != 0 ? 100 : -100;
             }
-            vertices[index++] = new Point(coordinates);
+            vertices[index++] = new org.gameStart.multiDimensional.objects.Point(coordinates);
         }
         return vertices;
     }
 
-    private static ArrayList<Line> getAllEdges(Point[] vertices) {
+    private static ArrayList<Line> getAllEdges(org.gameStart.multiDimensional.objects.Point[] vertices) {
         ArrayList<Line> edges = new ArrayList<>();
         for (int i = 0; i < vertices.length; i++) {
             for (int j = i + 1; j < vertices.length; j++) {
@@ -295,7 +289,7 @@ public class MultiDimensionalInit {
         return edges;
     }
 
-    private static boolean areAdjacent(Point p1, Point p2) {
+    private static boolean areAdjacent(org.gameStart.multiDimensional.objects.Point p1, org.gameStart.multiDimensional.objects.Point p2) {
         int diffCount = 0;
         for (int i = 0; i < DIMENSIONS; i++) {
             if (p1.get(i) != p2.get(i)) {
@@ -305,7 +299,7 @@ public class MultiDimensionalInit {
         return diffCount == 1;
     }
 
-    private static ArrayList<Face> getAllFaces(Point[] vertices) {
+    private static ArrayList<Face> getAllFaces(org.gameStart.multiDimensional.objects.Point[] vertices) {
         ArrayList<Face> faces = new ArrayList<>();
 
         // 选择两个维度进行固定
@@ -314,7 +308,7 @@ public class MultiDimensionalInit {
                 // 对于每对固定的维度值
                 for (int fixed1 = 0; fixed1 <= 1; fixed1++) {
                     for (int fixed2 = 0; fixed2 <= 1; fixed2++) {
-                        ArrayList<Point> faceVertices = new ArrayList<>();
+                        ArrayList<org.gameStart.multiDimensional.objects.Point> faceVertices = new ArrayList<>();
                         // 收集符合条件的顶点
                         for (Point vertex : vertices) {
                             if (vertex.get(i) == (fixed1 == 0 ? -100 : 100) &&
