@@ -4,7 +4,7 @@ import org.mainFrame.model.Model;
 
 import java.awt.event.MouseEvent;
 
-public class DraggableLister extends MouseAndKeyLister {
+public class DraggableListener extends MouseAndKeyListener {
     //此Lister是用于实现拖拽功能的
     Model model;
     //旧的鼠标位置
@@ -14,7 +14,7 @@ public class DraggableLister extends MouseAndKeyLister {
     //是否被按下
     boolean isPress = false;
 
-    public DraggableLister(Model model) {
+    public DraggableListener(Model model) {
         this.model = model;
     }
 

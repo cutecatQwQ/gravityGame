@@ -3,9 +3,13 @@ package org;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.Tool.MathUtil;
 import org.gameStart.multiDimensional.objects.Hypercube;
 import org.gameStart.multiDimensional.objects.LinearGeometry;
 import org.gameStart.multiDimensional.objects.Point;
+import org.gameStart.multiDimensional.objects.Vector;
+
+import java.util.Arrays;
 
 /**
  * Unit test for simple App.
@@ -36,19 +40,9 @@ public class AppTest
      */
     public void testApp()
     {
-        Point[] points = new Point[16];
-        int index = 0;
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 2; j++) {
-                for (int k = 0; k < 2; k++) {
-                    for (int l = 0; l < 2; l++) {
-                        points[index++] = new Point(i,j,k,l);
-                    }
-                }
-            }
-        }
-        Hypercube hypercube = new Hypercube(4,points);
-        hypercube.generateLowDimensionalLinearGeometry();
-        System.out.println(hypercube);
+        double[] a = new double[]{0,1,0};
+        Point point = new Point(0,0,0);
+        Vector vector = new Vector(0,0,1);
+        System.out.println(Arrays.toString(MathUtil.revolve3D(a, point, vector, 90)));
     }
 }

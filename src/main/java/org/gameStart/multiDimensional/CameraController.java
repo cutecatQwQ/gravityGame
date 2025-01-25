@@ -1,63 +1,104 @@
 package org.gameStart.multiDimensional;
 
+import org.Tool.MathUtil;
 import org.Tool.Tool;
-import org.mainFrame.MainJFrame;
-import org.mainFrame.mouseAndKeyLister.MouseAndKeyLister;
+import org.gameStart.multiDimensional.objects.RevolveVector;
+import org.mainFrame.mouseAndKeyLister.MouseAndKeyListener;
 
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
-public class CameraController extends MouseAndKeyLister {
+public class CameraController extends MouseAndKeyListener {
+    //摄像头
     Camera camera;
+    //按键
+    boolean w,a,s,d,e,q;
 
-    boolean u, i, o, j, k, l;
+    //旧的鼠标位置
+    int oldEX, oldEY;
 
-    public CameraController(Camera camera, MainJFrame mainJFrame) {
+    //是否被按下
+    boolean isPress = false;
+
+    //模式 0世界坐标系 1相机坐标系
+    int mode;
+
+    public CameraController(Camera camera) {
         this.camera = camera;
-        this.u = false;
-        this.i = false;
-        this.o = false;
-        this.j = false;
-        this.k = false;
-        this.l = false;
-        final int[] index = {0};
+        this.w = false;
+        this.a = false;
+        this.s = false;
+        this.d = false;
+        this.e = false;
+        this.q = false;
+        this.mode = 0;
         Tool.afterAndContinue(10, 50, () -> {
-//            double startTime = 0;
-//            if(u||i||o||j||k||l)startTime = System.currentTimeMillis();
-            if (u) camera.revolve(0, 1, 1);
-            if (i) camera.revolve(0, 2, 1);
-            if (o) camera.revolve(1, 2, 1);
-            if (j) camera.revolve(0, 3, 1);
-            if (k) camera.revolve(1, 3, 1);
-            if (l) camera.revolve(2, 3, 1);
-            if(u||i||o||j||k||l) MultiDimensionalInit.change(camera);
-            if(u||i||o||j||k||l) {
-//                System.out.println(""+u+i+o+j+k+l);
-//                Tool.addDate(index[0]++,System.currentTimeMillis()-startTime);
+            if(w||s||a||d||e||q) {
+//                System.out.println(""+w+s+a+d+e+q);
             }
-        });
+            //世界坐标系
+            if(mode == 0) {
+                if (w) camera.location.setCoordinates(MathUtil.move(camera.location.getCoordinates(),10,camera.getWorldBaseVector(0).getCoordinates()));
+                if (s) camera.location.setCoordinates(MathUtil.move(camera.location.getCoordinates(),-10,camera.getWorldBaseVector(0).getCoordinates()));
+                if (a) camera.location.setCoordinates(MathUtil.move(camera.location.getCoordinates(),-10,camera.getWorldBaseVector(1).getCoordinates()));
+                if (d) camera.location.setCoordinates(MathUtil.move(camera.location.getCoordinates(),10,camera.getWorldBaseVector(1).getCoordinates()));
+                if (e) camera.location.setCoordinates(MathUtil.move(camera.location.getCoordinates(),10,camera.getWorldBaseVector(2).getCoordinates()));
+                if (q) camera.location.setCoordinates(MathUtil.move(camera.location.getCoordinates(),-10,camera.getWorldBaseVector(2).getCoordinates()));
+            }
+            //相机坐标系
+            else {
+            if (w) camera.location.setCoordinates(MathUtil.move(camera.location.getCoordinates(),10,camera.getBaseVector(2).getCoordinates()));
+            if (s) camera.location.setCoordinates(MathUtil.move(camera.location.getCoordinates(),-10,camera.getBaseVector(2).getCoordinates()));
+            if (a) camera.location.setCoordinates(MathUtil.move(camera.location.getCoordinates(),-10,camera.getBaseVector(0).getCoordinates()));
+            if (d) camera.location.setCoordinates(MathUtil.move(camera.location.getCoordinates(),10,camera.getBaseVector(0).getCoordinates()));
+            if (e) camera.location.setCoordinates(MathUtil.move(camera.location.getCoordinates(),10,camera.getBaseVector(1).getCoordinates()));
+            if (q) camera.location.setCoordinates(MathUtil.move(camera.location.getCoordinates(),-10,camera.getBaseVector(1).getCoordinates()));
+        }});
     }
 
+    //拖拽功能的实现
+    @Override
+    public void mousePressed(MouseEvent e) {
+        isPress = true;
+        oldEX = e.getX();
+        oldEY = e.getY();
+    }
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        isPress = false;
+    }
+        @Override
+    public void mouseDragged(MouseEvent e) {
+        if (isPress) {
+            //绕世界坐标系的xoy平面旋转
+            camera.revolve(new RevolveVector(3,0, 1, (e.getX() - oldEX) * camera.sensitivity));
+            //抬头/低头
+            camera.revolveYOZ(-(e.getY() - oldEY) * camera.sensitivity);
+            oldEX = e.getX();
+            oldEY = e.getY();
+        }
+    }
+    //键盘监听
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.print(e.getKeyChar());
         switch (e.getKeyChar()) {
-            case 'U':
-                u = true;
+            case 'W':
+                w = true;
                 break;
-            case 'I':
-                i = true;
+            case 'S':
+                s = true;
                 break;
-            case 'O':
-                o = true;
+            case 'A':
+                a = true;
                 break;
-            case 'J':
-                j = true;
+            case 'D':
+                d = true;
                 break;
-            case 'K':
-                k = true;
+            case 'E':
+                this.e = true;
                 break;
-            case 'L':
-                l = true;
+            case 'Q':
+                q = true;
                 break;
         }
     }
@@ -65,24 +106,32 @@ public class CameraController extends MouseAndKeyLister {
     @Override
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyChar()) {
-            case 'U':
-                u = false;
+            case 'W':
+                w = false;
                 break;
-            case 'I':
-                i = false;
+            case 'S':
+                s = false;
                 break;
-            case 'O':
-                o = false;
+            case 'A':
+                a = false;
                 break;
-            case 'J':
-                j = false;
+            case 'D':
+                d = false;
                 break;
-            case 'K':
-                k = false;
+            case 'E':
+                this.e = false;
                 break;
-            case 'L':
-                l = false;
+            case 'Q':
+                q = false;
                 break;
         }
+    }
+
+    public int getMode() {
+        return mode;
+    }
+
+    public void setMode(int mode) {
+        this.mode = mode;
     }
 }

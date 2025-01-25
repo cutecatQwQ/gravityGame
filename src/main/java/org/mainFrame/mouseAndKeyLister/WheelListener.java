@@ -4,11 +4,11 @@ import org.mainFrame.model.Model;
 
 import java.awt.event.MouseWheelEvent;
 
-public class WheelLister extends MouseAndKeyLister {
+public class WheelListener extends MouseAndKeyListener {
     //此Lister是专门监听鼠标滚轮的
     Model model;
 
-    public WheelLister(Model model) {
+    public WheelListener(Model model) {
         this.model = model;
     }
 

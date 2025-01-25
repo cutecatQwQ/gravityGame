@@ -1,14 +1,15 @@
 package org.mainFrame.model;
 
 import org.mainFrame.MainJFrame;
-import org.mainFrame.mouseAndKeyLister.MouseAndKeyLister;
+import org.mainFrame.Service.Observable;
+import org.mainFrame.mouseAndKeyLister.MouseAndKeyListener;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 
-public abstract class Model implements Comparable<Model> {
+public abstract class Model extends Observable implements Comparable<Model> {
     //宽,高
     private Double w, h;
     //左上角坐标
@@ -20,20 +21,20 @@ public abstract class Model implements Comparable<Model> {
     //图片
     private Image image;
     //鼠标键盘监听
-    public final ArrayList<MouseAndKeyLister> mouseAndKeyLister = new ArrayList<>();
+    public final ArrayList<MouseAndKeyListener> mouseAndKeyListener = new ArrayList<>();
 
     //渲染图片长宽和整个屏幕的比值,每个model都有单独的index让图片渲染的更清晰，默认是整个系统的比值
     private Double index = MainJFrame.index;
 
     //添加鼠标键盘监听事件
-    public Model addLister(MouseAndKeyLister mouseAndKeyLister) {
-        this.mouseAndKeyLister.add(mouseAndKeyLister);
+    public Model addListener(MouseAndKeyListener mouseAndKeyListener) {
+        this.mouseAndKeyListener.add(mouseAndKeyListener);
         return this;
     }
 
     //移除鼠标键盘监听事件
-    public Model removeLister(MouseAndKeyLister mouseAndKeyLister) {
-        this.mouseAndKeyLister.remove(mouseAndKeyLister);
+    public Model removeLister(MouseAndKeyListener mouseAndKeyListener) {
+        this.mouseAndKeyListener.remove(mouseAndKeyListener);
         return this;
     }
 
@@ -178,7 +179,7 @@ public abstract class Model implements Comparable<Model> {
                 ", priority=" + priority +
                 ", color=" + color +
                 ", image=" + image +
-                ", mouseAndKeyLister=" + mouseAndKeyLister +
+                ", mouseAndKeyListener=" + mouseAndKeyListener +
                 ", index=" + index +
                 '}';
     }

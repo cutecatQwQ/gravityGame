@@ -19,11 +19,9 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.mainFrame.MainJFrame;
-import org.mainFrame.Service.ListenService;
-import org.mainFrame.Service.PaintService;
 import org.mainFrame.model.BoxAndTextModel;
 import org.mainFrame.model.ImageModel;
-import org.mainFrame.mouseAndKeyLister.DraggableLister;
+import org.mainFrame.mouseAndKeyLister.DraggableListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -84,7 +82,8 @@ public class Tool {
     public static void debug(String string, MainJFrame mainJFrame) {
         if (!isAdd) {
             isAdd = true;
-            debug.addLister(new DraggableLister(debug));
+            debug.setPriority(-10);
+            debug.addListener(new DraggableListener(debug));
             mainJFrame.getListenService().mouseSetAdd(debug);
             mainJFrame.getPaintService().paintSetAdd(debug);
         }
@@ -99,7 +98,7 @@ public class Tool {
     private static ImageModel lineChartImage = new ImageModel(MainJFrame.dimension.width-500,0,500,500,"");;
     static {
         //初始化图片Model
-        lineChartImage.addLister(new DraggableLister(lineChartImage));
+        lineChartImage.addListener(new DraggableListener(lineChartImage));
     }
     private static XYSeries series = new XYSeries("a");
     private static String x,y,title;

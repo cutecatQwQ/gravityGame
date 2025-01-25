@@ -6,7 +6,7 @@ import org.mainFrame.model.Model;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
-public class ButtonLister extends MouseAndKeyLister {
+public class ButtonListener extends MouseAndKeyListener {
     //此Lister是专门监听按钮的，鼠标进入会变色，按下会变小
     Model model;
     //需要监听的窗口
@@ -14,7 +14,7 @@ public class ButtonLister extends MouseAndKeyLister {
     //正常时候的位置宽高
     double x, y, w, h;
 
-    public ButtonLister(Model model, MainJFrame mainJFrame) {
+    public ButtonListener(Model model, MainJFrame mainJFrame) {
         this.model = model;
         this.x = 0.025 *model.getWDouble();
         this.y = 0.025 *model.getHDouble();
@@ -53,5 +53,13 @@ public class ButtonLister extends MouseAndKeyLister {
         model.paint();
         //鼠标状态设置为默认
         mainJFrame.setMouse(Cursor.DEFAULT_CURSOR);
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public void setModel(Model model) {
+        this.model = model;
     }
 }

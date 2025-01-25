@@ -1,9 +1,8 @@
 package org.gameStart;
 
-import org.mainFrame.Service.ListenService;
 import org.mainFrame.MainJFrame;
 import org.mainFrame.model.Model;
-import org.mainFrame.mouseAndKeyLister.MouseAndKeyLister;
+import org.mainFrame.mouseAndKeyLister.MouseAndKeyListener;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -13,7 +12,7 @@ public class GameInit {
         //最小化方法
         Model esc = new Model() {
         };
-        esc.addLister(new MouseAndKeyLister() {
+        esc.addListener(new MouseAndKeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()) {

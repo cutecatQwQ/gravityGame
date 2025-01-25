@@ -1,5 +1,8 @@
 package org.gameStart.multiDimensional.objects;
 
+import org.Tool.MathUtil;
+import org.gameStart.multiDimensional.Matrix;
+
 import java.util.Arrays;
 import java.util.function.Consumer;
 
@@ -39,6 +42,34 @@ public class LinearGeometry extends Object {
 
     public LinearGeometry[][] getLowDimensionalLinearGeometry() {
         return lowDimensionalLinearGeometry;
+    }
+
+    @Override
+    public void move(MoveVector moveVector) {
+        if(moveVector.size() != getDimension()) throw new IllegalArgumentException("两个维度不同，无法移动");
+        for (LinearGeometry linearGeometry : lowDimensionalLinearGeometry[0]) {
+            ((Point) linearGeometry).setCoordinates(MathUtil.move(((Point) linearGeometry).getCoordinates(),1,moveVector.getCoordinates()));
+        }
+        notifyAllObservers();
+    }
+
+    @Override
+    public void revolve(RevolveVector revolveVector) {
+        Point point;
+        for (int i = 0; i < lowDimensionalLinearGeometry[0].length; i++) {
+            point = (Point) lowDimensionalLinearGeometry[0][i];
+            point.setCoordinates(
+                    MathUtil.matrixVectorMultiplication(
+                            Matrix.getRevolveMatrix(
+                                    (int) revolveVector.get(0),
+                                    (int) revolveVector.get(1),
+                                    (int) revolveVector.get(2),
+                                    revolveVector.get(3)
+                            ), point.getCoordinates()
+                    )
+            );
+        }
+        notifyAllObservers();
     }
 
     @Override

@@ -15,7 +15,7 @@ public class Hypercube extends LinearGeometry {
             setLinearGeometry(i, new LinearGeometry[(int) (MathUtil.C(getDimension(), i) * Math.pow(2, getDimension() - i))]);
         }
         //填充点
-        for (int i = 0; i < getLowDimensionalLinearGeometry()[0].length; i++) {
+        for (int i = 0; i < getLinearGeometry(0).length; i++) {
             setLinearGeometry(0, i, points[i]);
         }
 
@@ -29,6 +29,23 @@ public class Hypercube extends LinearGeometry {
         this.fatherHypercube = fatherHypercube;
         generateLowDimensionalLinearGeometry();
     }
+
+    //根据一个点向其他方向扩展的 (不是很好写，咕咕)
+//    public static Hypercube(int dimension, Point point,double... edgeLengths) {
+//        if(dimension != point.size() || dimension != edgeLengths.length)
+//            throw new IllegalArgumentException("维度不同");
+//        Point[] points = new Point[16];
+//        int index = 0;
+//        for (int i = 0; i < 2; i++) {
+//            for (int j = 0; j < 2; j++) {
+//                for (int k = 0; k < 2; k++) {
+//                    for (int l = 0; l < 2; l++) {
+//                        points[index++] = new Point(i,j,k,l);
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     /**
      * 两个对立的流形会有以下特征
@@ -82,7 +99,7 @@ public class Hypercube extends LinearGeometry {
             }
         }
         //发现没有之后向里面填充
-        LinearGeometry linearGeometry = (getDimension() > 1) ? new Hypercube(this, lowDimensionalPoints) : new Line(lowDimensionalPoints);
+        LinearGeometry linearGeometry = new Hypercube(this, lowDimensionalPoints);
         firstHypercube.getLinearGeometry(getDimension() - 1)[index] = linearGeometry;
         return linearGeometry;
     }

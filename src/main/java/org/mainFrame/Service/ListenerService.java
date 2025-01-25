@@ -6,7 +6,7 @@ import org.mainFrame.model.Model;
 import java.awt.event.*;
 import java.util.TreeSet;
 
-public class ListenService implements MouseListener, MouseMotionListener, MouseWheelListener, KeyListener {
+public class ListenerService implements MouseListener, MouseMotionListener, MouseWheelListener, KeyListener {
     //当前焦点所在的model
     private Model focus;
     //鼠标所在的model
@@ -77,20 +77,20 @@ public class ListenService implements MouseListener, MouseMotionListener, MouseW
     //鼠标点击事件
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (hover != null) hover.mouseAndKeyLister.forEach(m -> m.mouseClicked(e));
+        if (hover != null) hover.mouseAndKeyListener.forEach(m -> m.mouseClicked(e));
     }
 
     //鼠标按下事件
     @Override
     public void mousePressed(MouseEvent e) {
         focus = hover;
-        if (focus != null) focus.mouseAndKeyLister.forEach(m -> m.mousePressed(e));
+        if (focus != null) focus.mouseAndKeyListener.forEach(m -> m.mousePressed(e));
     }
 
     //鼠标释放事件
     @Override
     public void mouseReleased(MouseEvent e) {
-        if (focus != null) focus.mouseAndKeyLister.forEach(m -> m.mouseReleased(e));
+        if (focus != null) focus.mouseAndKeyListener.forEach(m -> m.mouseReleased(e));
         focus = null;
     }
 
@@ -106,7 +106,7 @@ public class ListenService implements MouseListener, MouseMotionListener, MouseW
     //鼠标拖拽事件
     @Override
     public void mouseDragged(MouseEvent e) {
-        if (focus != null) focus.mouseAndKeyLister.forEach(m -> m.mouseDragged(e));
+        if (focus != null) focus.mouseAndKeyListener.forEach(m -> m.mouseDragged(e));
     }
 
     //鼠标移动事件
@@ -115,11 +115,11 @@ public class ListenService implements MouseListener, MouseMotionListener, MouseW
         mouseAddAndRemove();
         for (Model leaf : mouse) {
             if (Tool.inBox(leaf.getXDouble(), leaf.getYDouble(), leaf.getWDouble(), leaf.getHDouble(), e.getX(), e.getY())) {
-                leaf.mouseAndKeyLister.forEach(m -> m.mouseMoved(e));
+                leaf.mouseAndKeyListener.forEach(m -> m.mouseMoved(e));
                 //如果移动时当前所处的位置不等于新的model，则判定当前鼠标所在model发生改变，产生鼠标进入进出事件
                 if (hover != leaf) {
-                    leaf.mouseAndKeyLister.forEach(m -> m.mouseEntered(e));
-                    if (hover != null) hover.mouseAndKeyLister.forEach(m -> m.mouseExited(e));
+                    leaf.mouseAndKeyListener.forEach(m -> m.mouseEntered(e));
+                    if (hover != null) hover.mouseAndKeyListener.forEach(m -> m.mouseExited(e));
                     hover = leaf;
                 }
                 return;
@@ -127,7 +127,7 @@ public class ListenService implements MouseListener, MouseMotionListener, MouseW
         }
         //运行到此行代码时说明鼠标没有在任何一个model里，则是从一个model来到了空地，产生鼠标进入进出事件
         if (hover != null) {
-            hover.mouseAndKeyLister.forEach(m -> m.mouseExited(e));
+            hover.mouseAndKeyListener.forEach(m -> m.mouseExited(e));
             hover = null;
         }
     }
@@ -138,7 +138,7 @@ public class ListenService implements MouseListener, MouseMotionListener, MouseW
         mouseAddAndRemove();
         for (Model leaf : mouse) {
             if (Tool.inBox(leaf.getXDouble(), leaf.getYDouble(), leaf.getWDouble(), leaf.getHDouble(), e.getX(), e.getY())) {
-                leaf.mouseAndKeyLister.forEach(m -> m.mouseWheelMoved(e));
+                leaf.mouseAndKeyListener.forEach(m -> m.mouseWheelMoved(e));
                 return;
             }
         }
@@ -163,7 +163,7 @@ public class ListenService implements MouseListener, MouseMotionListener, MouseW
     public void keyTyped(KeyEvent e) {
         keyAddAndRemove();
         for (Model leaf : key) {
-            leaf.mouseAndKeyLister.forEach(m -> m.keyTyped(e));
+            leaf.mouseAndKeyListener.forEach(m -> m.keyTyped(e));
         }
     }
 
@@ -172,7 +172,7 @@ public class ListenService implements MouseListener, MouseMotionListener, MouseW
     public void keyPressed(KeyEvent e) {
         keyAddAndRemove();
         for (Model leaf : key) {
-            leaf.mouseAndKeyLister.forEach(m -> m.keyPressed(e));
+            leaf.mouseAndKeyListener.forEach(m -> m.keyPressed(e));
         }
     }
 
@@ -181,7 +181,7 @@ public class ListenService implements MouseListener, MouseMotionListener, MouseW
     public void keyReleased(KeyEvent e) {
         keyAddAndRemove();
         for (Model leaf : key) {
-            leaf.mouseAndKeyLister.forEach(m -> m.keyReleased(e));
+            leaf.mouseAndKeyListener.forEach(m -> m.keyReleased(e));
         }
     }
 }

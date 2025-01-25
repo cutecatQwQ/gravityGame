@@ -4,11 +4,14 @@ import org.gameStart.multiDimensional.Matrix;
 import org.gameStart.multiDimensional.objects.Point;
 import org.gameStart.multiDimensional.objects.Vector;
 
+import java.util.Arrays;
+
 public final class MathUtil {
     // 组合数最大 n 值
     private static final int MAX_N = 10;
     // 声明一个二维数组来存储组合数
     private static final long[][] dp = new long[MAX_N + 1][MAX_N + 1];
+
     // 使用动态规划预计算组合数
     static {
         // 初始化组合数数组
@@ -24,6 +27,7 @@ public final class MathUtil {
             }
         }
     }
+
     // 获取组合数 C(n, k)
     public static long C(int n, int k) {
         if (n < 0 || n > MAX_N || k < 0 || k > n) {
@@ -45,29 +49,75 @@ public final class MathUtil {
         }
     }
 
-    //点point的坐标平移到以newOrigin为原点的坐标
-    public static Point translate(Point point, Point newOrigin) {
-        if (point.size() != newOrigin.size()) {
-            throw new IllegalArgumentException("两个点的维度不同:\n" + point + "\n" + newOrigin);
+    //点point的坐标加n倍的vector p+n*v
+    public static double[] move(double[] point,double n, double[] vector) {
+        if (point.length != vector.length) {
+            throw new IllegalArgumentException("两个点的维度不同:\n" + Arrays.toString(point) + "\n" + Arrays.toString(vector));
         }
-        double[] coordinates = new double[point.size()];
-        for (int i = 0; i < point.size(); i++) {
-            coordinates[i] = point.get(i) - newOrigin.get(i);
+        double[] coordinates = new double[point.length];
+        for (int i = 0; i < point.length; i++) {
+            coordinates[i] = point[i] + n*vector[i];
         }
-        return new Point(coordinates);
+        return coordinates;
     }
 
     //将点point旋转到以matrix为基坐标的坐标系 即求Mx = p中的x
-    public static Point revolve(Point point, Matrix matrix) {
+    public static double[] revolve(double[] point, Matrix matrix) {
         //LU分解
         Matrix[] matrices = LUDecomposition(matrix);
         Matrix L = matrices[0]; // 下三角矩阵
         Matrix U = matrices[1]; // 上三角矩阵
         //Ly = p
-        Point y = forwardSubstitution(L, point);
+        double[] y = forwardSubstitution(L, point);
         //Ux = p
-        Point x = backwardSubstitution(U, y);
+        double[] x = backwardSubstitution(U, y);
         return x;
+    }
+
+    /**
+     * 以center为圆心，vector为轴，将point逆时针旋转a度(四维的选两个向量形成一个平面实现按照平面旋转，但是目前没写这个方法),vector必须是单位向量
+     * 将点移动到以center为原点的坐标系
+     * 将向量vector旋转到z轴，形成旋转矩阵
+     * 对点进行旋转，形成旋转矩阵
+     * 将点转回原来的vector的方向，形成旋转矩阵
+     * 将点移回世界坐标系
+     *
+     * 上面中间三个步骤可以形成一个矩阵(五个矩阵右乘)，再乘那个点就行，这五个矩阵乘出来的可以直接用最普通的旋转矩阵相乘算出来
+     * 参考 https://www.cnblogs.com/zhoug2020/p/7842808.html
+     * [
+     *  [ v0^2+(1-v0^2)*cos(a)  v0*v1*(1-cos(a))-v2*sin(a)  v0*v2*(1-cos(a))+v1*sin(a) ],
+     *  [ v0*v1*(1-cos(a))+v2*sin(a)  v1^2+(1-v1^2)*cos(a)  v1*v2*(1-cos(a))-v0*sin(a) ],
+     *  [ v0*v2*(1-cos(a))-v1*sin(a)  v1*v2*(1-cos(a))+v0*sin(a)  v2^2+(1-v2^2)*cos(a) ]
+     * ]
+     */
+    public static double[] revolve3D(double[] point,Point center,Vector vector,double a) {
+        if(point.length != center.size() ||point.length != vector.size()) {
+            throw new IllegalArgumentException("维度不同："+point.length+" "+center.size()+" "+ vector.size());
+        }
+        //将点移动到以center为原点的坐标系
+        double[] coordinates = move(point,-1,center.getCoordinates());
+
+        double cosA = Math.cos(Math.toRadians(a));
+        double sinA = Math.sin(Math.toRadians(a));
+
+        Matrix matrix = new Matrix(point.length,point.length);
+
+        matrix.set(0, 0, cosA + Math.pow(vector.get(0), 2) * (1 - cosA));
+        matrix.set(0, 1, vector.get(0) * vector.get(1) * (1 - cosA) - vector.get(2) * sinA);
+        matrix.set(0, 2, vector.get(0) * vector.get(2) * (1 - cosA) + vector.get(1) * sinA);
+
+        matrix.set(1, 0, vector.get(1) * vector.get(0) * (1 - cosA) + vector.get(2) * sinA);
+        matrix.set(1, 1, cosA + Math.pow(vector.get(1), 2) * (1 - cosA));
+        matrix.set(1, 2, vector.get(1) * vector.get(2) * (1 - cosA) - vector.get(0) * sinA);
+
+        matrix.set(2, 0, vector.get(2) * vector.get(0) * (1 - cosA) - vector.get(1) * sinA);
+        matrix.set(2, 1, vector.get(2) * vector.get(1) * (1 - cosA) + vector.get(0) * sinA);
+        matrix.set(2, 2, cosA + Math.pow(vector.get(2), 2) * (1 - cosA));
+
+        coordinates = matrixVectorMultiplication(matrix,coordinates);
+        //将点移回世界坐标系
+        coordinates = move(coordinates,1,center.getCoordinates());
+        return coordinates;
     }
 
     // 矩阵求逆
@@ -170,29 +220,29 @@ public final class MathUtil {
     }
 
     // 前代法
-    public static Point forwardSubstitution(Matrix L, Point b) {
+    public static double[] forwardSubstitution(Matrix L, double[] b) {
         int n = L.getRow();
-        Point y = new Point(n);
+        double[] y = new double[n];
         for (int i = 0; i < n; i++) {
             double sum = 0;
             for (int j = 0; j < i; j++) {
-                sum += L.get(i, j) * y.get(j);
+                sum += L.get(i, j) * y[j];
             }
-            y.set(i, (b.get(i) - sum) / L.get(i, i));
+            y[i] = (b[i] - sum) / L.get(i, i);
         }
         return y;
     }
 
     // 后代法
-    public static Point backwardSubstitution(Matrix U, Point y) {
+    public static double[] backwardSubstitution(Matrix U, double[] y) {
         int n = U.getRow();
-        Point x = new Point(n);
+        double[] x = new double[n];
         for (int i = n - 1; i >= 0; i--) {
             double sum = 0;
             for (int j = i + 1; j < n; j++) {
-                sum += U.get(i, j) * x.get(j);
+                sum += U.get(i, j) * x[j];
             }
-            x.set(i, (y.get(i) - sum) / U.get(i, i));
+            x[i] = (y[i] - sum) / U.get(i, i);
         }
         return x;
     }
@@ -243,25 +293,25 @@ public final class MathUtil {
     }
 
     //矩阵和向量的乘法
-    public static Vector matrixVectorMultiplication(Matrix matrix, Vector vector) {
+    public static double[] matrixVectorMultiplication(Matrix matrix, double[] point) {
         // 检查矩阵的列数是否等于向量的大小
-        if (matrix.getColumn() != vector.size()) {
-            throw new IllegalArgumentException("矩阵的列数必须等于向量的大小:" + matrix.getColumn() + "!=" + vector.size());
+        if (matrix.getColumn() != point.length) {
+            throw new IllegalArgumentException("矩阵的列数必须等于向量的大小:" + matrix.getColumn() + "!=" + point.length);
         }
 
         // 创建结果向量
-        Vector resultVector = new Vector(matrix.getRow());
+        double[] result = new double[matrix.getRow()];
 
         // 进行矩阵和向量的乘法运算
-        for (int i = 0; i < resultVector.size(); i++) {
+        for (int i = 0; i < result.length; i++) {
             double sum = 0;
             for (int j = 0; j < matrix.getColumn(); j++) {
-                sum += matrix.get(i, j) * vector.get(j);
+                sum += matrix.get(i, j) * point[j];
             }
-            resultVector.set(i, sum);
+            result[i] = sum;
         }
 
-        return resultVector;
+        return result;
     }
 
 }

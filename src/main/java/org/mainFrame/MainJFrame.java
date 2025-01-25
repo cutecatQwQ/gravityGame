@@ -1,7 +1,7 @@
 package org.mainFrame;
 
 import org.Tool.Tool;
-import org.mainFrame.Service.ListenService;
+import org.mainFrame.Service.ListenerService;
 import org.mainFrame.Service.PaintService;
 
 import javax.swing.*;
@@ -17,7 +17,7 @@ public class MainJFrame extends JFrame {
     //渲染图片长宽和整个屏幕的比值
     public static final Double index = 2.5;
     //鼠标键盘监听service
-    private ListenService listenService;
+    private ListenerService listenerService;
     //绘画线程
     private PaintService paintService;
 
@@ -74,17 +74,17 @@ public class MainJFrame extends JFrame {
     }
 
     //添加鼠标键盘监听
-    private void addLister(ListenService listenService) {
-        addMouseListener(listenService);
-        addMouseMotionListener(listenService);
-        addMouseWheelListener(listenService);
-        addKeyListener(listenService);
+    private void addLister(ListenerService listenerService) {
+        addMouseListener(listenerService);
+        addMouseMotionListener(listenerService);
+        addMouseWheelListener(listenerService);
+        addKeyListener(listenerService);
     }
 
     //初始化线程服务
     private void init() {
         //初始化监听服务
-        listenService = new ListenService();
+        listenerService = new ListenerService();
         //初始化绘画线程服务
         paintService = new PaintService(index);
     }
@@ -92,7 +92,7 @@ public class MainJFrame extends JFrame {
     //启动所有服务
     private void initAndStart() {
         //添加监听事件
-        addLister(listenService);
+        addLister(listenerService);
         //启动绘画线程
         new Thread(this::paintRun).start();
     }
@@ -105,8 +105,8 @@ public class MainJFrame extends JFrame {
         getContentPane().setCursor(Cursor.getPredefinedCursor(type));
     }
 
-    public ListenService getListenService() {
-        return listenService;
+    public ListenerService getListenService() {
+        return listenerService;
     }
 
     public PaintService getPaintService() {

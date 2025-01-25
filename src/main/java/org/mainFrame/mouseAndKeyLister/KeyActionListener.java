@@ -4,12 +4,12 @@ import org.mainFrame.model.Model;
 
 import java.awt.event.KeyEvent;
 
-public class KeyActionLister extends MouseAndKeyLister {
+public class KeyActionListener extends MouseAndKeyListener {
     //此Lister是用于实现键盘监听功能的
     Model model;
     boolean w,a,s,d;
 
-    public KeyActionLister(Model model) {
+    public KeyActionListener(Model model) {
         this.model = model;
         new Thread(() -> {
             while(true){

@@ -9,8 +9,4 @@ public class MoveVector extends Vector{
     public MoveVector(int dimension) {
         super(dimension);
     }
-
-    public MoveVector(Point point) {
-        super(point);
-    }
 }

@@ -2,7 +2,7 @@ package org.gameStart;
 
 import org.Tool.Tool;
 import org.gameStart.gravity.GravityInit;
-import org.gameStart.multiDimensional.MultiDimensionalInit3D;
+import org.gameStart.multiDimensional.MultiDimensionalInit;
 import org.gameStart.testOne.Graph;
 import org.gameStart.testOne.Line;
 import org.mainFrame.MainJFrame;
@@ -59,7 +59,7 @@ public class GameStart {
     }
 
     private void test7(MainJFrame mainJFrame) {
-        MultiDimensionalInit3D.multiDimensionalInit(mainJFrame);
+        MultiDimensionalInit.multiDimensionalInit(mainJFrame);
     }
 
     private void test6(MainJFrame mainJFrame) {
@@ -129,9 +129,9 @@ public class GameStart {
 
         Point point = new Point(1200, 200, 5, Color.black, -1);
         Line line = new Line(point1, point, Color.black, 0);
-        line.addLister(new ButtonLister(line, mainJFrame));
-        point.addLister(new DraggableLister(point));
-        point.addLister(new MouseAndKeyLister() {
+        line.addListener(new ButtonListener(line, mainJFrame));
+        point.addListener(new DraggableListener(point));
+        point.addListener(new MouseAndKeyListener() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 model.setX(point.getXDouble() - 5);
@@ -155,8 +155,8 @@ public class GameStart {
         mainJFrame.getPaintService().paintSetAdd(line);
         mainJFrame.getListenService().mouseSetAdd(point);
 
-        point1.addLister(new DraggableLister(point1));
-        point1.addLister(new MouseAndKeyLister() {
+        point1.addListener(new DraggableListener(point1));
+        point1.addListener(new MouseAndKeyListener() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 model.setX(point1.getXDouble() - 5);
@@ -182,27 +182,27 @@ public class GameStart {
 
     private void test0(MainJFrame mainJFrame) {
         ImageModel imageModel = new ImageModel(500, 500, 250, 200, "photo/头像.png");
-        imageModel.addLister(new DraggableLister(imageModel));
-        imageModel.addLister(new WheelLister(imageModel));
+        imageModel.addListener(new DraggableListener(imageModel));
+        imageModel.addListener(new WheelListener(imageModel));
         mainJFrame.getPaintService().paintSetAdd(imageModel);
         mainJFrame.getListenService().mouseSetAdd(imageModel);
 
         ImageModel Gao = new ImageModel(0, 0, 100, 100, -1, "photo/高晓蕊.jpg");
-        Gao.addLister(new DraggableLister(Gao));
-        Gao.addLister(new KeyActionLister(Gao));
+        Gao.addListener(new DraggableListener(Gao));
+        Gao.addListener(new KeyActionListener(Gao));
         mainJFrame.getPaintService().paintSetAdd(Gao);
         mainJFrame.getListenService().mouseSetAdd(Gao);
         mainJFrame.getListenService().keySetAdd(Gao);
 
         BoxAndTextModel boxAndTextModel = new BoxAndTextModel(0, 0, 200, 50, new Color(0, 0, 0, 0), Color.blue, 0.66, "点击开始");
-        boxAndTextModel.addLister(new ButtonLister(boxAndTextModel, mainJFrame));
+        boxAndTextModel.addListener(new ButtonListener(boxAndTextModel, mainJFrame));
         mainJFrame.getPaintService().paintSetAdd(boxAndTextModel);
         mainJFrame.getListenService().mouseSetAdd(boxAndTextModel);
 
-//        Tool.after(3000, "", "addLister", "");
+//        Tool.after(3000, "", "addListener", "");
 
         BoxAndTextModel boxAndTextModel1 = new BoxAndTextModel(0, 50, 1960 * 4 / 50.0, 1080 * 4 / 50.0, new Color(225, 225, 225), Color.BLACK, 0.33, "原神");
-        boxAndTextModel1.addLister(new WheelLister(boxAndTextModel1));
+        boxAndTextModel1.addListener(new WheelListener(boxAndTextModel1));
         mainJFrame.getPaintService().paintSetAdd(boxAndTextModel1);
         mainJFrame.getListenService().mouseSetAdd(boxAndTextModel1);
 

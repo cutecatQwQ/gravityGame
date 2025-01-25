@@ -4,9 +4,9 @@ import org.Tool.Tool;
 import org.mainFrame.MainJFrame;
 import org.mainFrame.model.BoxAndTextModel;
 import org.mainFrame.model.Model;
-import org.mainFrame.mouseAndKeyLister.ButtonLister;
-import org.mainFrame.mouseAndKeyLister.DraggableLister;
-import org.mainFrame.mouseAndKeyLister.MouseAndKeyLister;
+import org.mainFrame.mouseAndKeyLister.ButtonListener;
+import org.mainFrame.mouseAndKeyLister.DraggableListener;
+import org.mainFrame.mouseAndKeyLister.MouseAndKeyListener;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -25,7 +25,7 @@ public class GravityInit {
 
         //暂停功能
         BoxAndTextModel button = new BoxAndTextModel(1400, 0, 1960 * 4 / 50.0, 1080 * 4 / 50.0, new Color(225,225,225), Color.BLACK, 0.33, "暂停");
-        button.addLister(new ButtonLister(button,mainJFrame){
+        button.addListener(new ButtonListener(button,mainJFrame){
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(pa[0]){
@@ -36,11 +36,11 @@ public class GravityInit {
                 pa[0] = !pa[0];
             }
         });
-        button.addLister(new DraggableLister(button));
+        button.addListener(new DraggableListener(button));
         mainJFrame.getPaintService().paintSetAdd(button);
         mainJFrame.getListenService().mouseSetAdd(button);
         Model paused = new Model() {};
-        paused.addLister(new MouseAndKeyLister() {
+        paused.addListener(new MouseAndKeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()) {
@@ -59,7 +59,7 @@ public class GravityInit {
 
         //步进
         BoxAndTextModel button1 = new BoxAndTextModel(1400, 1080 * 4 / 50.0, 1960 * 4 / 50.0, 1080 * 4 / 50.0, new Color(225,225,225), Color.BLACK, 0.33, "步进");
-        button1.addLister(new ButtonLister(button1,mainJFrame){
+        button1.addListener(new ButtonListener(button1,mainJFrame){
             @Override
             public void mouseClicked(MouseEvent e) {
                 timeService.timePasses();
@@ -71,7 +71,7 @@ public class GravityInit {
                 }
             }
         });
-        button1.addLister(new DraggableLister(button1));
+        button1.addListener(new DraggableListener(button1));
         mainJFrame.getPaintService().paintSetAdd(button1);
         mainJFrame.getListenService().mouseSetAdd(button1);
     }
@@ -93,7 +93,7 @@ public class GravityInit {
 //        mainJFrame.getPaintService().paintSetAdd(rectangleModel);
 //        mainJFrame.getPaintService().paintSetAdd(circleModel);
 //        timeService.timeSetAdd(rectangleModel);
-//        rectangleModel.addLister(new DraggableLister(rectangleModel));
+//        rectangleModel.addListener(new DraggableListener(rectangleModel));
 //        mainJFrame.getListenService().mouseSetAdd(rectangleModel);
 
 //        timeService.timeSetAdd(circleModel);
@@ -108,10 +108,10 @@ public class GravityInit {
         RectangleModel wall3 = new RectangleModel(MainJFrame.dimension.width-10, 10, 50, MainJFrame.dimension.height-10, Color.black, v, a,false,infinity);
         RectangleModel wall4 = new RectangleModel(0, MainJFrame.dimension.height-10,  MainJFrame.dimension.width-10,50, Color.black, v, a,false,infinity);
 
-        wall1.addLister(new DraggableLister(wall1));
-        wall2.addLister(new DraggableLister(wall2));
-        wall3.addLister(new DraggableLister(wall3));
-        wall4.addLister(new DraggableLister(wall4));
+        wall1.addListener(new DraggableListener(wall1));
+        wall2.addListener(new DraggableListener(wall2));
+        wall3.addListener(new DraggableListener(wall3));
+        wall4.addListener(new DraggableListener(wall4));
 
         timeService.timeSetAdd(wall1);
         timeService.timeSetAdd(wall2);
@@ -143,7 +143,7 @@ public class GravityInit {
 //            a.set(1,(2*random.nextDouble()-1)/100);
             rectangleModels[i].setA(a);
             rectangleModels[i].setV(v);
-            rectangleModels[i].addLister(new DraggableLister(rectangleModels[i]));
+            rectangleModels[i].addListener(new DraggableListener(rectangleModels[i]));
             mainJFrame.getPaintService().paintSetAdd(rectangleModels[i]);
             timeService.timeSetAdd(rectangleModels[i]);
             mainJFrame.getListenService().mouseSetAdd(rectangleModels[i]);
@@ -174,7 +174,7 @@ public class GravityInit {
 //            a.set(1,0.0);
 //            rectangleModelss[i].setA(a);
 //            rectangleModelss[i].setV(v);
-//            rectangleModelss[i].addLister(new DraggableLister(rectangleModelss[i]));
+//            rectangleModelss[i].addListener(new DraggableListener(rectangleModelss[i]));
 //            mainJFrame.getPaintService().paintSetAdd(rectangleModelss[i]);
 //            timeService.timeSetAdd(rectangleModelss[i]);
 //            mainJFrame.getListenService().mouseSetAdd(rectangleModelss[i]);

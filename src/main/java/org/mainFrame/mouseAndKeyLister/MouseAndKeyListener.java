@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 
-public abstract class MouseAndKeyLister {
+public abstract class MouseAndKeyListener {
 
     //各种鼠标键盘方法接口
     public void mouseClicked(MouseEvent e) {}

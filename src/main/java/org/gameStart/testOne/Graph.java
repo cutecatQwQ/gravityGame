@@ -2,10 +2,8 @@ package org.gameStart.testOne;
 
 
 import org.mainFrame.MainJFrame;
-import org.mainFrame.Service.ListenService;
-import org.mainFrame.Service.PaintService;
-import org.mainFrame.mouseAndKeyLister.DraggableLister;
-import org.mainFrame.mouseAndKeyLister.MouseAndKeyLister;
+import org.mainFrame.mouseAndKeyLister.DraggableListener;
+import org.mainFrame.mouseAndKeyLister.MouseAndKeyListener;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -30,8 +28,8 @@ public class Graph {
 
     public void addPoint(Point point, MainJFrame mainJFrame) {
         points.add(point);
-        point.addLister(new DraggableLister(point));
-        point.addLister(new MouseAndKeyLister() {
+        point.addListener(new DraggableListener(point));
+        point.addListener(new MouseAndKeyListener() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 background.setX(point.getXDouble()- point.r);
