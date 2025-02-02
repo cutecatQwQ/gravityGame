@@ -4,46 +4,57 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="添加监听变量机制，降低代耦合性和复杂度&#10;感觉改的乱七八糟的，渲染出来的画面流速不均，想改回去了">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Engine3D.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Scene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/Observable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/Observer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/ScrollBar.java" afterDir="false" />
+    <list default="true" id="be7cd31d-3cfa-4d2b-9c07-cb78cf4f582d" name="Changes" comment="添加监听变量机制，降低代耦合性和复杂度&#10;感觉改的乱七八糟的，渲染出来的画面流速不均，想改回去了。&#10;&#10;一段时间过后，做了个优化，设置一个变量表示当前帧是否需要渲染，需要渲染即渲染，降低了同一帧的渲染次数，保证每帧渲染一次，性能大幅提升。&#10;&#10;接下来准备写深度遮挡关系，先保存下">
+      <change afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/MultiDimensionalInit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/Window.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/objects/Coloration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Description of requirements.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Description of requirements.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Tool/MathUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Tool/MathUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Tool/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Tool/Tool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/GameInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/GameInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/GameStart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/GravityInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/GravityInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Camera3D.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Camera3DController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/CameraController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/CameraController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Face.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Matrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/MultiDimensionalInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/MultiDimensionalInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/MultiDimensionalInit3D.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Rendering3DService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/Hypercube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/Hypercube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/Line.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/LinearGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/LinearGeometry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/MoveVector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/MoveVector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/Object.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/RevolveVector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/RevolveVector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/MainJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/MainJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/ListenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/ListenerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/ButtonLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/ButtonListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/DraggableLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/DraggableListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/KeyActionLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/KeyActionListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/MouseAndKeyLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/MouseAndKeyListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/WheelLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/WheelListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Tool/MathUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/Tool/MathUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Tool/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/Tool/Tool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/GameInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/GameInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/GameStart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CircleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/gravity/CircleModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/CollideModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/gravity/CollideModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/GravityInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/gravity/GravityInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/QuadNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/gravity/QuadNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/RectangleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/gravity/RectangleModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/gravity/TimeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/gravity/TimeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/CameraController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/CameraController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Engine3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/Engine3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/MultiDimensionalInit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/Window.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/Hypercube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/objects/Hypercube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/LinearGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/objects/LinearGeometry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/MoveVector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/objects/MoveVector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/NonlinearGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/objects/NonlinearGeometry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/objects/Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/objects/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/RevolveVector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/objects/RevolveVector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/multiDimensional/objects/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/multiDimensional/objects/Vector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/testOne/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/testOne/Line.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gameStart/testOne/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/gameStart/testOne/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/MainJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/mainFrame/MainJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/ListenerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/mainFrame/Service/ListenerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/Observable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/mainFrame/Service/Observable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/mainFrame/Service/Observer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/Service/PaintService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/mainFrame/Service/PaintService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/BoxAndTextModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/mainFrame/model/BoxAndTextModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/ImageModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/mainFrame/model/ImageModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/mainFrame/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/model/ScrollBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/mainFrame/model/ScrollBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/ButtonListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/mainFrame/mouseAndKeyLister/ButtonListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/DraggableListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/mainFrame/mouseAndKeyLister/DraggableListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/KeyActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/mainFrame/mouseAndKeyLister/KeyActionListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/MouseAndKeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/mainFrame/mouseAndKeyLister/MouseAndKeyListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mainFrame/mouseAndKeyLister/WheelListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameEngine/mainFrame/mouseAndKeyLister/WheelListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gameEngine/AppTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +64,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -79,89 +90,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/project/程序/gravityGame&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/华硕/.m2/repository/jfree/jfreechart/1.0.13/jfreechart-1.0.13.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.gameStart.multiDimensional" />
       <recent name="org.gameStart.multiDimensional.objects" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.App" />
+  <component name="RunManager">
+    <configuration name="gameEngine.App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gameEngine.App" />
       <module name="Game" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.*" />
+          <option name="PATTERN" value="gameEngine.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BinaryStringGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.BinaryStringGenerator" />
-      <module name="Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org" />
-      <option name="MAIN_CLASS_NAME" value="org.AppTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppTest.testApp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org" />
-      <option name="MAIN_CLASS_NAME" value="org.AppTest" />
-      <option name="METHOD_NAME" value="testApp" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
-        <item itemvalue="JUnit.AppTest.testApp" />
-        <item itemvalue="JUnit.AppTest" />
-        <item itemvalue="Application.BinaryStringGenerator" />
+        <item itemvalue="Application.gameEngine.App" />
       </list>
     </recent_temporary>
   </component>
@@ -238,7 +203,20 @@
       <workItem from="1737719218003" duration="16504000" />
       <workItem from="1737742991617" duration="54000" />
       <workItem from="1737775163524" duration="6463000" />
-      <workItem from="1737788466246" duration="2361000" />
+      <workItem from="1737788466246" duration="7919000" />
+      <workItem from="1737877062206" duration="2456000" />
+      <workItem from="1737953889007" duration="9005000" />
+      <workItem from="1737996043876" duration="50000" />
+      <workItem from="1738043325806" duration="5865000" />
+      <workItem from="1738050570336" duration="10902000" />
+      <workItem from="1738124834525" duration="1752000" />
+      <workItem from="1738130739565" duration="1541000" />
+      <workItem from="1738149202611" duration="14370000" />
+      <workItem from="1738216483087" duration="421000" />
+      <workItem from="1738396488662" duration="1003000" />
+      <workItem from="1738398298298" duration="9194000" />
+      <workItem from="1738471587953" duration="13139000" />
+      <workItem from="1738506679054" duration="8161000" />
     </task>
     <task id="LOCAL-00002" summary="设置多页面（tool的debug方法使用时存在问题，只显示在第一个调用的页面上）">
       <option name="closed" value="true" />
@@ -272,7 +250,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735662966898</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="添加监听变量机制，降低代耦合性和复杂度&#10;感觉改的乱七八糟的，渲染出来的画面流速不均，想改回去了。&#10;&#10;一段时间过后，做了个优化，设置一个变量表示当前帧是否需要渲染，需要渲染即渲染，降低了同一帧的渲染次数，保证每帧渲染一次，性能大幅提升。&#10;&#10;接下来准备写深度遮挡关系，先保存下">
+      <option name="closed" value="true" />
+      <created>1737790970819</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1737790970819</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,7 +294,8 @@
     <MESSAGE value="还是没找到什么好算法，和上一版比基本没什么区别。突然有灵感要写一个四维的，遂咕咕这个" />
     <MESSAGE value="写好了四维的一个界面，但是目前很难去辨别和理解，网上找了个哔哩哔哩的视频，先从四维降到3维后再直接采用3维的技术，觉得很好，于是尝试复现，所以备份" />
     <MESSAGE value="写了一个需求分析，根据需求分析写了一些物体类，还有超方形生成算法，结构等。没写的还有摄像机" />
-    <option name="LAST_COMMIT_MESSAGE" value="写了一个需求分析，根据需求分析写了一些物体类，还有超方形生成算法，结构等。没写的还有摄像机" />
+    <MESSAGE value="添加监听变量机制，降低代耦合性和复杂度&#10;感觉改的乱七八糟的，渲染出来的画面流速不均，想改回去了。&#10;&#10;一段时间过后，做了个优化，设置一个变量表示当前帧是否需要渲染，需要渲染即渲染，降低了同一帧的渲染次数，保证每帧渲染一次，性能大幅提升。&#10;&#10;接下来准备写深度遮挡关系，先保存下" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加监听变量机制，降低代耦合性和复杂度&#10;感觉改的乱七八糟的，渲染出来的画面流速不均，想改回去了。&#10;&#10;一段时间过后，做了个优化，设置一个变量表示当前帧是否需要渲染，需要渲染即渲染，降低了同一帧的渲染次数，保证每帧渲染一次，性能大幅提升。&#10;&#10;接下来准备写深度遮挡关系，先保存下" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -328,5 +315,11 @@
         <PinnedItemInfo parentTag="org.gameStart.multiDimensional.Matrix" memberName="vectors" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="((Hypercube)linearGeometry).lowDimensionalLinearGeometry" custom="org.gameStart.multiDimensional.objects.Hypercube" />
+        <watch expression="this" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
