@@ -35,7 +35,6 @@ public class Engine3D {
         this.window = new Window(0, 0, MainJFrame.dimension.width, MainJFrame.dimension.height);
         this.scene = new Scene();
         this.camera = new Camera(new Point(300, 300, 300), new Vector(-1, -1, -1));
-        camera.setMode(0);
         this.cameraController = new CameraController(camera);
         this.models = new ArrayList<>();
         this.render = true;
@@ -52,8 +51,6 @@ public class Engine3D {
 
         initUI(mainJFrame);
 
-        //添加像素大小变动渲染观察者
-        window.attach(new Observer(this::rendering));
         //添加相机变动渲染观察者
         camera.location.attach(new Observer(this::rendering));
         camera.direction.attach(new Observer(this::rendering));
@@ -62,7 +59,7 @@ public class Engine3D {
         Tool.newLineChart("每帧毫秒数","时间","毫秒数ms",mainJFrame);
 
         //检查当前帧是否需要渲染，如果需要进行渲染
-        Tool.afterAndContinue(100,50,()->{
+        Tool.afterAndContinue(100,10,()->{
             if(render) {
                 long start = System.currentTimeMillis();
                 scene.rendering(window);
@@ -74,17 +71,6 @@ public class Engine3D {
                 System.out.println(end-start);
             }
         });
-//        window.addListener(new MouseAndKeyListener() {
-//            @Override
-//            public void keyTyped(KeyEvent e) {
-//                if(e.getKeyChar() == KeyEvent.VK_SPACE) {
-//                    if(render) {
-//                        scene.rendering(window);
-//                        render = false;
-//                    }
-//                }
-//            }
-//        });
 
         System.out.println("3D engine init over");
     }
@@ -92,8 +78,26 @@ public class Engine3D {
     public void initUI(MainJFrame mainJFrame) {
         BoxAndTextModel boxAndTextModel;
 
-        //0 投影按钮
-        boxAndTextModel = new BoxAndTextModel(0, 0, 100, 30, new Color(225, 225, 225), new Color(64, 64, 64), 0.6, window.getCamera().getMode() == 0 ? "正交投影" : "透视投影");
+        //0 显示坐标
+        boxAndTextModel = new BoxAndTextModel(0, 10, 500, 30, Color.white, Color.black, 0.4, "坐标: " + Arrays.toString(camera.location.getCoordinates()));
+        models.add(boxAndTextModel);
+        boxAndTextModel.setPriority(-1);
+        //添加观察者
+        camera.location.attach(new Observer(() -> {
+            ((BoxAndTextModel) models.get(0)).setText("坐标: " + Arrays.toString(camera.location.getCoordinates()));
+        }));
+
+        //1 显示朝向
+        boxAndTextModel = new BoxAndTextModel(0, 45, 500, 30, Color.white, Color.black, 0.4, "朝向: " + Arrays.toString(camera.direction.getCoordinates()));
+        models.add(boxAndTextModel);
+        boxAndTextModel.setPriority(-1);
+        //添加观察者
+        camera.direction.attach(new Observer(() -> {
+            ((BoxAndTextModel) models.get(1)).setText("朝向: " + Arrays.toString(camera.direction.getCoordinates()));
+        }));
+
+        //2 投影按钮
+        boxAndTextModel = new BoxAndTextModel(0, 80, 100, 30, new Color(225, 225, 225), new Color(64, 64, 64), 0.6, window.getCamera().getMode() == 0 ? "正交投影" : "透视投影");
         models.add(boxAndTextModel);
         boxAndTextModel.setPriority(-1);
         boxAndTextModel.addListener(new ButtonListener(boxAndTextModel, mainJFrame) {
@@ -111,8 +115,8 @@ public class Engine3D {
             }
         });
 
-        //1 移动按钮
-        boxAndTextModel = new BoxAndTextModel(110, 0, 120, 30, new Color(225, 225, 225), new Color(64, 64, 64), 0.6, "沿世界系移动");
+        //3 移动按钮
+        boxAndTextModel = new BoxAndTextModel(110, 80, 120, 30, new Color(225, 225, 225), new Color(64, 64, 64), 0.6, "沿世界系移动");
         models.add(boxAndTextModel);
         boxAndTextModel.setPriority(-1);
         boxAndTextModel.addListener(new ButtonListener(boxAndTextModel, mainJFrame) {
@@ -128,12 +132,12 @@ public class Engine3D {
             }
         });
 
-        //2 显示焦距
-        boxAndTextModel = new BoxAndTextModel(0, 35, 60, 30, Color.white, Color.black, 0.4, "焦距");
+        //4 显示焦距
+        boxAndTextModel = new BoxAndTextModel(0, 115, 60, 30, Color.white, Color.black, 0.4, "焦距");
         models.add(boxAndTextModel);
         boxAndTextModel.setPriority(-1);
-        //345 焦距
-        ScrollBar scrollBar0 = new ScrollBar(60, 35, 200, 30, 60, 0.4, 500, 5000, new Color(192, 192, 192), Color.white, Color.black, Color.gray,mainJFrame);
+        //567 焦距
+        ScrollBar scrollBar0 = new ScrollBar(60, 115, 200, 30, 60, 0.4, 50, 5000, new Color(192, 192, 192), Color.white, Color.black, Color.gray,mainJFrame);
         models.add(scrollBar0);
         models.add(scrollBar0.getTextModel());
         models.add(scrollBar0.getButtonModel());
@@ -147,12 +151,12 @@ public class Engine3D {
         });
 
 
-        //6 显示灵敏度
-        boxAndTextModel = new BoxAndTextModel(0, 70, 60, 30, Color.white, Color.black, 0.4, "灵敏度");
+        //8 显示灵敏度
+        boxAndTextModel = new BoxAndTextModel(0, 150, 60, 30, Color.white, Color.black, 0.4, "灵敏度");
         models.add(boxAndTextModel);
         boxAndTextModel.setPriority(-1);
-        //789 鼠标灵敏度
-        ScrollBar scrollBar1 = new ScrollBar(60, 70, 200, 30, 60, 0.4, 0.01, 1, new Color(192, 192, 192), Color.white, Color.black, Color.gray,mainJFrame);
+        //9 10 11 鼠标灵敏度
+        ScrollBar scrollBar1 = new ScrollBar(60, 150, 200, 30, 60, 0.4, 0.01, 1, new Color(192, 192, 192), Color.white, Color.black, Color.gray,mainJFrame);
         models.add(scrollBar1);
         models.add(scrollBar1.getTextModel());
         models.add(scrollBar1.getButtonModel());
@@ -165,12 +169,12 @@ public class Engine3D {
             }
         });
 
-        //10 显示像素大小
-        boxAndTextModel = new BoxAndTextModel(0, 105, 60, 30, Color.white, Color.black, 0.4, "像素大小");
+        //12 显示像素大小
+        boxAndTextModel = new BoxAndTextModel(0, 185, 60, 30, Color.white, Color.black, 0.4, "像素大小");
         models.add(boxAndTextModel);
         boxAndTextModel.setPriority(-1);
-        //11 12 13 像素大小
-        ScrollBar scrollBar2 = new ScrollBar(60, 105, 200, 30, 60, 0.4, 1, 10, new Color(192, 192, 192), Color.white, Color.black, Color.gray,mainJFrame);
+        //13 14 15 像素大小
+        ScrollBar scrollBar2 = new ScrollBar(60, 185, 200, 30, 60, 0.4, 1, 10, new Color(192, 192, 192), Color.white, Color.black, Color.gray,mainJFrame);
         models.add(scrollBar2);
         models.add(scrollBar2.getTextModel());
         models.add(scrollBar2.getButtonModel());
@@ -179,28 +183,27 @@ public class Engine3D {
         scrollBar2.getButtonModel().addListener(new MouseAndKeyListener() {
             @Override
             public void mouseDragged(MouseEvent e) {
-                window.setN((int) Math.round(scrollBar2.getContent()));
+                camera.setPixelEdge((int) Math.round(scrollBar2.getContent()));
             }
         });
 
-
-        //14 显示坐标
-        boxAndTextModel = new BoxAndTextModel(0, 140, 500, 30, Color.white, Color.black, 0.4, "坐标: " + Arrays.toString(camera.location.getCoordinates()));
+        //12 显示像素大小
+        boxAndTextModel = new BoxAndTextModel(0, 220, 60, 30, Color.white, Color.black, 0.4, "缩放倍数");
         models.add(boxAndTextModel);
         boxAndTextModel.setPriority(-1);
-        //添加观察者
-        camera.location.attach(new Observer(() -> {
-            ((BoxAndTextModel) models.get(14)).setText("坐标: " + Arrays.toString(camera.location.getCoordinates()));
-        }));
-
-        //15 显示朝向
-        boxAndTextModel = new BoxAndTextModel(0, 175, 500, 30, Color.white, Color.black, 0.4, "朝向: " + Arrays.toString(camera.direction.getCoordinates()));
-        models.add(boxAndTextModel);
-        boxAndTextModel.setPriority(-1);
-        //添加观察者
-        camera.direction.attach(new Observer(() -> {
-            ((BoxAndTextModel) models.get(15)).setText("朝向: " + Arrays.toString(camera.direction.getCoordinates()));
-        }));
+        //13 14 15 像素大小
+        ScrollBar scrollBar3 = new ScrollBar(60, 220, 200, 30, 60, 0.4, 0.1, 10, new Color(192, 192, 192), Color.white, Color.black, Color.gray,mainJFrame);
+        models.add(scrollBar3);
+        models.add(scrollBar3.getTextModel());
+        models.add(scrollBar3.getButtonModel());
+        scrollBar3.setPriority(-1);
+        scrollBar3.setContent(1);
+        scrollBar3.getButtonModel().addListener(new MouseAndKeyListener() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                camera.setScaleParameters(scrollBar3.getContent());
+            }
+        });
 
         //将ui添加进去
         models.forEach(model -> mainJFrame.getPaintService().paintSetAdd(model));

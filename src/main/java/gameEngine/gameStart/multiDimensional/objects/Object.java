@@ -20,6 +20,8 @@ public class Object extends Observable implements Comparable<Object> {
     }
 
     public Object getLowDimensionalObject() {
+        if (lowDimensionalObject == null)
+            setLowDimensionalObject(new Point());
         return lowDimensionalObject;
     }
 

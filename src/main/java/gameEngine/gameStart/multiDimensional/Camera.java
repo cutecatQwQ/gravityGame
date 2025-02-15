@@ -6,6 +6,8 @@ import gameEngine.gameStart.multiDimensional.objects.Vector;
 import gameEngine.Tool.MathUtil;
 import gameEngine.gameStart.multiDimensional.objects.Object;
 
+import java.util.Arrays;
+
 //摄像头，就是三维场景中的摄像头
 public class Camera extends Object {
     //位置
@@ -18,6 +20,10 @@ public class Camera extends Object {
     int mode;
     //灵敏度 0.1是正常
     double sensitivity;
+    //最小像素边长
+    int pixelEdge; //pixelEdge
+    //缩放参数 类似于镜头的投影幕布的大小
+    double scaleParameters;
     public Camera(Point location, Vector direction) {
         this(location,direction,1000);
     }
@@ -32,6 +38,8 @@ public class Camera extends Object {
         MathUtil.normalization(direction);
         this.focalLength = focalLength;
         this.mode = 1;
+        this.pixelEdge = 1;
+        this.scaleParameters = 1;
     }
 
     /**
@@ -118,12 +126,16 @@ public class Camera extends Object {
 
     //透视投影 f/(f+z) = x2/x3  -->  x2 = x3*f/(f+z) z为深度
     private double[] perspectiveProjection(double[] point) {
-        return new double[]{point[0] * focalLength / (focalLength + point[2]), point[1] * focalLength / (focalLength + point[1]),point[2]};
+        //如果f+z<0直接按照无穷大算
+//        if(focalLength+point[2] <= 0)
+//            return new double[]{point[0]*Double.POSITIVE_INFINITY,point[1]*Double.POSITIVE_INFINITY,point[2]};
+//            return new double[]{point[0] * focalLength / -(focalLength + point[2]), point[1] * focalLength / -(focalLength + point[2]),point[2]};
+        return new double[]{point[0] * focalLength / (focalLength + point[2]), point[1] * focalLength / (focalLength + point[2]),point[2]};
     }
 
     //正交投影 什么也不做，z轴为深度
     private double[] orthographicProjection(double[] point) {
-        return point;
+        return Arrays.copyOf(point,point.length);
     }
 
     public int getMode() {
@@ -150,5 +162,23 @@ public class Camera extends Object {
 
     public void setSensitivity(double sensitivity) {
         this.sensitivity = sensitivity;
+    }
+
+    public int getPixelEdge() {
+        return pixelEdge;
+    }
+
+    public void setPixelEdge(int pixelEdge) {
+        this.pixelEdge = pixelEdge;
+        notifyAllObservers();
+    }
+
+    public double getScaleParameters() {
+        return scaleParameters;
+    }
+
+    public void setScaleParameters(double scaleParameters) {
+        this.scaleParameters = scaleParameters;
+        notifyAllObservers();
     }
 }

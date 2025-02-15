@@ -109,4 +109,12 @@ public class Hypercube extends LinearGeometry {
         firstHypercube.getLinearGeometry(getDimension() - 1)[index] = linearGeometry;
         return linearGeometry;
     }
+
+    //让某一个边变长a
+    public void add(int n,double a){
+        if(n>getDimension()) throw new IllegalArgumentException("维度超出上限");
+        for (int i = 0; i < getLinearGeometry(0).length; i++) {
+            if((i>>n&1) == 1) ((Point)getLinearGeometry(0,i)).add(n,a);
+        }
+    }
 }
